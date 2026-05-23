@@ -42,9 +42,11 @@ a {
 }
 
 .preloader img {
-  width: 180px;
-  filter: drop-shadow(0 0 35px rgba(255,255,255,.4));
-  animation: pulseLogo 1.6s ease-in-out infinite;
+  width: min(520px, 72vw);
+filter:
+  drop-shadow(0 0 25px rgba(255,255,255,.35))
+  drop-shadow(0 0 60px rgba(37,99,235,.45))
+  drop-shadow(0 0 100px rgba(201,31,47,.35));  animation: pulseLogo 1.6s ease-in-out infinite;
 }
 
 .preloader.hide {

@@ -541,6 +541,79 @@
         text-align:center;
       }
     }
+
+    .logo-glow {
+  filter:
+    drop-shadow(0 0 18px rgba(255,255,255,.35))
+    drop-shadow(0 0 45px rgba(201,31,47,.45))
+    drop-shadow(0 0 70px rgba(37,99,235,.35));
+  animation: floatLogo 5s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.03); }
+}
+
+.hero {
+  background:
+    linear-gradient(90deg, rgba(2,8,23,.92), rgba(2,8,23,.62), rgba(2,8,23,.96)),
+    url("assets/images/storage-hero.jpg") center/cover no-repeat;
+}
+
+.hero::before {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(201,31,47,.45), transparent 35%),
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,.45), transparent 38%);
+  opacity:1;
+  animation: pulseLight 7s ease-in-out infinite alternate;
+}
+
+@keyframes pulseLight {
+  from { opacity:.65; transform:scale(1); }
+  to { opacity:1; transform:scale(1.08); }
+}
+
+.photo-strip {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  padding:0 6vw 110px;
+  background:#020817;
+}
+
+.photo-tile {
+  min-height:320px;
+  border-radius:32px;
+  overflow:hidden;
+  position:relative;
+  background:center/cover no-repeat;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  transform:translateY(0);
+  transition:.35s ease;
+}
+
+.photo-tile:hover {
+  transform:translateY(-12px) scale(1.02);
+}
+
+.photo-tile::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(2,8,23,.85), transparent 65%);
+}
+
+.photo-tile span {
+  position:absolute;
+  left:24px;
+  bottom:24px;
+  z-index:2;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+    
   </style>
 </head>
 

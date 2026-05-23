@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Location | Eagle Rock Boat & RV Storage Complex</title>
-  <meta name="description" content="Eagle Rock Boat and RV Storage Complex is located in Eagle Rock, Missouri near Table Rock Lake, serving lake visitors, residents, boat owners, RV owners, and trailer owners." />
+  <meta name="description" content="Eagle Rock Boat and RV Storage Complex is located at 19114 State Hwy E, Eagle Rock, MO 65641 near Table Rock Lake." />
 
   <link rel="stylesheet" href="../assets/css/style.css" />
 
@@ -51,6 +51,29 @@
       margin: 24px 0 32px;
     }
 
+    .address-card {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(14px);
+      color: white;
+      font-weight: 950;
+      box-shadow: 0 25px 70px rgba(0,0,0,.28);
+      margin-bottom: 26px;
+    }
+
+    .address-card span {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .78rem;
+    }
+
     .location-section {
       padding: 95px 5vw;
       background:
@@ -77,6 +100,7 @@
     }
 
     .location-panel h2,
+    .map-panel h2,
     .directions-section h2 {
       font-size: clamp(2rem, 4vw, 3.7rem);
       line-height: .92;
@@ -119,55 +143,22 @@
       line-height: 1.5;
     }
 
-    .map-placeholder {
-      min-height: 390px;
-      position: relative;
-      display: grid;
-      place-items: center;
+    .map-frame {
+      width: 100%;
+      min-height: 420px;
+      border: 0;
       border-radius: 22px;
       overflow: hidden;
-      background:
-        linear-gradient(rgba(2,8,23,.62), rgba(2,8,23,.82)),
-        url('../assets/images/trl-hero.png') center/cover no-repeat;
+      filter: grayscale(.15) contrast(1.05) saturate(.95);
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
       border: 1px solid rgba(255,255,255,.14);
     }
 
-    .map-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-      background-size: 44px 44px;
-      opacity: .7;
-    }
-
-    .map-pin {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 440px;
-      padding: 32px;
-    }
-
-    .map-pin-icon {
-      width: 74px;
-      height: 74px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      background: var(--red);
-      box-shadow: 0 0 55px rgba(201,31,47,.75);
-      font-size: 2rem;
-    }
-
-    .map-pin h3 {
-      font-size: 2rem;
-      text-transform: uppercase;
-      letter-spacing: -.04em;
-      margin-bottom: 10px;
+    .map-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
     }
 
     .directions-section {
@@ -246,7 +237,7 @@
         grid-template-columns: 1fr;
       }
 
-      .map-placeholder {
+      .map-frame {
         min-height: 340px;
       }
     }
@@ -267,6 +258,7 @@
       <a href="../#overview">Overview</a>
       <a href="../storage-units/">Storage Options</a>
       <a href="../pricing/">Pricing</a>
+      <a href="../rent-now/">Rent Now</a>
       <a href="../location/">Location</a>
       <a href="../contact/">Contact</a>
     </nav>
@@ -279,15 +271,23 @@
       <div class="location-hero-content reveal">
         <p class="eyebrow">Eagle Rock, Missouri</p>
         <h1>Storage close to Table Rock Lake.</h1>
+
+        <div class="address-card">
+          <span>Address</span>
+          19114 State Hwy E, Eagle Rock, MO 65641
+        </div>
+
         <p>
           Eagle Rock Boat and RV Storage Complex serves lake visitors, local residents,
           boat owners, RV owners, campers, trailer owners, and anyone needing convenient
-          storage near the water.
+          storage near Table Rock Lake.
         </p>
 
         <div class="hero-actions">
-          <a href="../contact/" class="btn btn-red">Check Availability</a>
-          <a href="../storage-units/" class="btn btn-glass">View Storage Options</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=19114%20State%20Hwy%20E%2C%20Eagle%20Rock%2C%20MO%2065641" class="btn btn-red" target="_blank" rel="noopener">
+            Open In Google Maps
+          </a>
+          <a href="../contact/" class="btn btn-glass">Check Availability</a>
         </div>
       </div>
     </section>
@@ -298,7 +298,7 @@
           <p class="eyebrow">Location Overview</p>
           <h2>Built for lake access and local convenience.</h2>
           <p>
-            Located in Eagle Rock, Missouri, the storage complex is positioned for people
+            Located at 19114 State Hwy E in Eagle Rock, Missouri, the storage complex is positioned for people
             who need quick, practical access to boats, RVs, trailers, campers, and vehicles
             near Table Rock Lake.
           </p>
@@ -310,8 +310,8 @@
 
           <div class="location-badges">
             <div class="location-badge">
-              <strong>Eagle Rock, MO</strong>
-              <span>Serving local residents and lake-area visitors.</span>
+              <strong>19114 State Hwy E</strong>
+              <span>Eagle Rock, MO 65641</span>
             </div>
 
             <div class="location-badge">
@@ -332,20 +332,25 @@
         </div>
 
         <div class="map-panel reveal">
-          <p class="eyebrow">Map</p>
-          <h2 style="font-size:clamp(2rem,4vw,3.7rem);line-height:.92;letter-spacing:-.055em;text-transform:uppercase;margin-bottom:18px;">
-            Property map and directions.
-          </h2>
+          <p class="eyebrow">Map & Directions</p>
+          <h2>Find us on State Hwy E.</h2>
           <p>
-            A live map and exact property pin will be added once the final address and map embed are ready.
+            Use the map below to open directions to Eagle Rock Boat and RV Storage Complex.
           </p>
 
-          <div class="map-placeholder">
-            <div class="map-pin">
-              <div class="map-pin-icon">⌖</div>
-              <h3>Eagle Rock Storage</h3>
-              <p>Map embed coming after final address confirmation.</p>
-            </div>
+          <iframe
+            class="map-frame"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=19114%20State%20Hwy%20E%2C%20Eagle%20Rock%2C%20MO%2065641&output=embed">
+          </iframe>
+
+          <div class="map-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=19114%20State%20Hwy%20E%2C%20Eagle%20Rock%2C%20MO%2065641" class="btn btn-red" target="_blank" rel="noopener">
+              Get Directions
+            </a>
+            <a href="../contact/" class="btn btn-glass">Contact Us</a>
           </div>
         </div>
       </div>
@@ -362,7 +367,7 @@
           <strong>For Boat Owners</strong>
           <h3>Near the water</h3>
           <p>
-            Store your boat close to the lake so it is easier to get ready for weekends,
+            Store your boat close to Table Rock Lake so it is easier to get ready for weekends,
             seasonal use, and lake trips.
           </p>
         </div>
@@ -406,7 +411,7 @@
 
   <footer>
     <p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
-    <p>Eagle Rock, Missouri</p>
+    <p>19114 State Hwy E, Eagle Rock, MO 65641</p>
     <p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
   </footer>
 

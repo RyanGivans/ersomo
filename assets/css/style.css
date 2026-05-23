@@ -145,7 +145,7 @@ a {
   width: 52vw;
   height: 52vw;
   z-index: 2;
-  background: url("../images/ersofmo-logo.jpg") center/contain no-repeat;
+  background: url("../images/ersofmo-logo.png") center/contain no-repeat;
   opacity: .12;
   filter: drop-shadow(0 0 70px rgba(255,255,255,.45));
   animation: slowFloat 8s ease-in-out infinite;

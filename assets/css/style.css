@@ -122,13 +122,27 @@ width: min(650px, 80vw);
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-image: url("../images/trl-hero.png");
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  filter: saturate(1.12) contrast(1.08) brightness(.86);
+  transform: scale(1.04);
+  animation: heroSlowZoom 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroSlowZoom {
+  from {
+    transform: scale(1.04);
+  }
+
+  to {
+    transform: scale(1.12);
+  }
 }
 
 .hero-video-layer video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(1.1) contrast(1.05) brightness(.75);
+  display: none;
 }
 
 .hero-overlay {
@@ -140,17 +154,24 @@ width: min(650px, 80vw);
     linear-gradient(to top, #020817 0%, transparent 32%);
 }
 
-.hero-logo-watermark {
+.hero-overlay {
   position: absolute;
-  right: -9vw;
-  top: 12vh;
-  width: 52vw;
-  height: 52vw;
-  z-index: 2;
-  background: url("../images/ersofmo-logo.png") center/contain no-repeat;
-  opacity: .12;
-  filter: drop-shadow(0 0 70px rgba(255,255,255,.45));
-  animation: slowFloat 8s ease-in-out infinite;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,8,23,.98) 0%,
+      rgba(2,8,23,.86) 34%,
+      rgba(2,8,23,.48) 64%,
+      rgba(2,8,23,.12) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(2,8,23,1) 0%,
+      rgba(2,8,23,.55) 28%,
+      rgba(2,8,23,.28) 100%
+    );
 }
 
 @keyframes slowFloat {

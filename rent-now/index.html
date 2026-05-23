@@ -1,319 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Rent Now | Eagle Rock Boat & RV Storage Complex</title>
-  <meta name="description" content="Start your boat, RV, trailer, camper, or vehicle storage rental at Eagle Rock Boat and RV Storage Complex in Eagle Rock, Missouri." />
+<title>Rent Now | Eagle Rock Boat & RV Storage Complex</title>
+<meta name="description" content="Start your boat, RV, trailer, camper, or vehicle storage rental at Eagle Rock Boat and RV Storage Complex in Eagle Rock, Missouri." />
 
-  <link rel="stylesheet" href="../assets/css/style.css" />
+<link rel="stylesheet" href="../assets/css/style.css" />
 
-  <style>
-    .rent-hero {
-      min-height: 72vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding: 150px 5vw 90px;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(2,8,23,.98), rgba(2,8,23,.78), rgba(2,8,23,.34)),
-        linear-gradient(to top, rgba(2,8,23,1), rgba(2,8,23,.18)),
-        url('../assets/images/trl-hero.png') center right/cover no-repeat;
-    }
+<style>
+.rent-hero {
+min-height: 72vh;
+position: relative;
+display: flex;
+align-items: center;
+padding: 150px 5vw 90px;
+overflow: hidden;
+background:
+linear-gradient(90deg, rgba(2,8,23,.98), rgba(2,8,23,.78), rgba(2,8,23,.34)),
+linear-gradient(to top, rgba(2,8,23,1), rgba(2,8,23,.18)),
+url('../assets/images/trl-hero.png') center right/cover no-repeat;
+}
 
-    .rent-hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 78% 24%, rgba(244,199,108,.24), transparent 32%),
-        radial-gradient(circle at 18% 32%, rgba(201,31,47,.22), transparent 35%);
-      pointer-events: none;
-    }
+.rent-hero::after {
+content: '';
+position: absolute;
+inset: 0;
+background:
+radial-gradient(circle at 78% 24%, rgba(244,199,108,.24), transparent 32%),
+radial-gradient(circle at 18% 32%, rgba(201,31,47,.22), transparent 35%);
+pointer-events: none;
+}
 
-    .rent-hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 930px;
-    }
+.rent-hero-content {
+position: relative;
+z-index: 2;
+max-width: 930px;
+}
 
-    .rent-hero h1 {
-      font-size: clamp(3.4rem, 7vw, 7rem);
-    }
+.rent-hero h1 {
+font-size: clamp(3.4rem, 7vw, 7rem);
+}
 
-    .rent-hero p {
-      max-width: 720px;
-      color: var(--muted);
-      font-size: 1.18rem;
-      line-height: 1.7;
-      margin: 24px 0 32px;
-    }
+.rent-hero p {
+max-width: 720px;
+color: var(--muted);
+font-size: 1.18rem;
+line-height: 1.7;
+margin: 24px 0 32px;
+}
 
-    .rent-section {
-      padding: 95px 5vw;
-      background:
-        radial-gradient(circle at 20% 12%, rgba(201,31,47,.18), transparent 30%),
-        radial-gradient(circle at 82% 24%, rgba(37,99,235,.22), transparent 34%),
-        var(--dark);
-    }
+.rent-section {
+padding: 95px 5vw;
+background:
+radial-gradient(circle at 20% 12%, rgba(201,31,47,.18), transparent 30%),
+radial-gradient(circle at 82% 24%, rgba(37,99,235,.22), transparent 34%),
+var(--dark);
+}
 
-    .rent-layout {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 28px;
-      align-items: start;
-    }
+.rent-layout {
+display: grid;
+grid-template-columns: .85fr 1.15fr;
+gap: 28px;
+align-items: start;
+}
 
-    .rent-panel,
-    .embed-panel {
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
-      box-shadow: 0 35px 95px rgba(0,0,0,.38);
-      padding: 34px;
-      overflow: hidden;
-    }
+.rent-panel,
+.embed-panel {
+border-radius: 28px;
+border: 1px solid rgba(255,255,255,.14);
+background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
+box-shadow: 0 35px 95px rgba(0,0,0,.38);
+padding: 34px;
+overflow: hidden;
+}
 
-    .rent-panel h2,
-    .embed-panel h2 {
-      font-size: clamp(2rem, 4vw, 3.7rem);
-      line-height: .92;
-      letter-spacing: -.055em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
+.rent-panel h2,
+.embed-panel h2 {
+font-size: clamp(2rem, 4vw, 3.7rem);
+line-height: .92;
+letter-spacing: -.055em;
+text-transform: uppercase;
+margin-bottom: 18px;
+}
 
-    .rent-panel p,
-    .embed-panel p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 22px;
-    }
+.rent-panel p,
+.embed-panel p {
+color: var(--muted);
+line-height: 1.7;
+margin-bottom: 22px;
+}
 
-    .rent-steps {
-      display: grid;
-      gap: 14px;
-      margin-top: 28px;
-    }
+.rent-steps {
+display: grid;
+gap: 14px;
+margin-top: 28px;
+}
 
-    .rent-step {
-      display: grid;
-      grid-template-columns: 52px 1fr;
-      gap: 16px;
-      align-items: start;
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(2,8,23,.42);
-      border: 1px solid rgba(255,255,255,.12);
-    }
+.rent-step {
+display: grid;
+grid-template-columns: 52px 1fr;
+gap: 16px;
+align-items: start;
+padding: 18px;
+border-radius: 18px;
+background: rgba(2,8,23,.42);
+border: 1px solid rgba(255,255,255,.12);
+}
 
-    .rent-step strong {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--red);
-      box-shadow: 0 0 35px rgba(201,31,47,.45);
-      color: white;
-      font-size: 1.2rem;
-    }
+.rent-step strong {
+width: 52px;
+height: 52px;
+border-radius: 50%;
+display: grid;
+place-items: center;
+background: var(--red);
+box-shadow: 0 0 35px rgba(201,31,47,.45);
+color: white;
+font-size: 1.2rem;
+}
 
-    .rent-step h3 {
-      text-transform: uppercase;
-      letter-spacing: -.02em;
-      margin-bottom: 6px;
-    }
+.rent-step h3 {
+text-transform: uppercase;
+letter-spacing: -.02em;
+margin-bottom: 6px;
+}
 
-    .rent-step p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-    }
+.rent-step p {
+margin: 0;
+color: var(--muted);
+line-height: 1.55;
+}
 
-    .embed-shell {
-      min-height: 560px;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,.16);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(244,199,108,.18), transparent 35%),
-        linear-gradient(145deg, rgba(2,8,23,.78), rgba(2,8,23,.38));
-      display: grid;
-      place-items: center;
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-    }
+.embed-shell {
+min-height: 560px;
+border-radius: 24px;
+border: 1px solid rgba(255,255,255,.16);
+background:
+radial-gradient(circle at 50% 0%, rgba(244,199,108,.18), transparent 35%),
+linear-gradient(145deg, rgba(2,8,23,.78), rgba(2,8,23,.38));
+display: grid;
+place-items: center;
+padding: 28px;
+position: relative;
+overflow: hidden;
+}
 
-    .embed-shell::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-      background-size: 44px 44px;
-      opacity: .45;
-    }
+.embed-shell::before {
+content: '';
+position: absolute;
+inset: 0;
+background:
+linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+background-size: 44px 44px;
+opacity: .45;
+}
 
-    .embed-preview {
-      position: relative;
-      z-index: 2;
-      width: min(620px, 100%);
-      text-align: center;
-      padding: 34px;
-      border-radius: 24px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.14);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 25px 70px rgba(0,0,0,.28);
-    }
+.embed-preview {
+position: relative;
+z-index: 2;
+width: min(620px, 100%);
+text-align: center;
+padding: 34px;
+border-radius: 24px;
+background: rgba(255,255,255,.08);
+border: 1px solid rgba(255,255,255,.14);
+backdrop-filter: blur(14px);
+box-shadow: 0 25px 70px rgba(0,0,0,.28);
+}
 
-    .embed-preview .mini-logo {
-      width: 130px;
-      margin: 0 auto 20px;
-      display: block;
-      filter:
-        drop-shadow(0 0 20px rgba(255,255,255,.28))
-        drop-shadow(0 0 45px rgba(201,31,47,.25));
-    }
+.embed-preview .mini-logo {
+width: 130px;
+margin: 0 auto 20px;
+display: block;
+filter:
+drop-shadow(0 0 20px rgba(255,255,255,.28))
+drop-shadow(0 0 45px rgba(201,31,47,.25));
+}
 
-    .embed-preview h3 {
-      font-size: clamp(1.8rem, 3vw, 3rem);
-      line-height: .95;
-      text-transform: uppercase;
-      letter-spacing: -.045em;
-      margin-bottom: 16px;
-    }
+.embed-preview h3 {
+font-size: clamp(1.8rem, 3vw, 3rem);
+line-height: .95;
+text-transform: uppercase;
+letter-spacing: -.045em;
+margin-bottom: 16px;
+}
 
-    .embed-preview p {
-      margin-bottom: 24px;
-    }
+.embed-preview p {
+margin-bottom: 24px;
+}
 
-    .embed-note {
-      margin-top: 18px;
-      padding: 16px;
-      border-radius: 16px;
-      background: rgba(201,31,47,.14);
-      border: 1px solid rgba(201,31,47,.28);
-      color: #ffd7dc !important;
-      font-size: .9rem;
-    }
+.embed-note {
+margin-top: 18px;
+padding: 16px;
+border-radius: 16px;
+background: rgba(201,31,47,.14);
+border: 1px solid rgba(201,31,47,.28);
+color: #ffd7dc !important;
+font-size: .9rem;
+}
 
-    .quick-options {
-      padding: 95px 5vw;
-      background:
-        linear-gradient(rgba(2,8,23,.88), rgba(2,8,23,.94)),
-        url('../assets/images/trl-hero.png') center/cover no-repeat;
-    }
+.quick-options {
+padding: 95px 5vw;
+background:
+linear-gradient(rgba(2,8,23,.88), rgba(2,8,23,.94)),
+url('../assets/images/trl-hero.png') center/cover no-repeat;
+}
 
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 38px;
-    }
+.quick-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 18px;
+margin-top: 38px;
+}
 
-    .quick-card {
-      padding: 28px;
-      border-radius: 24px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.13);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 25px 70px rgba(0,0,0,.28);
-    }
+.quick-card {
+padding: 28px;
+border-radius: 24px;
+background: rgba(255,255,255,.08);
+border: 1px solid rgba(255,255,255,.13);
+backdrop-filter: blur(14px);
+box-shadow: 0 25px 70px rgba(0,0,0,.28);
+}
 
-    .quick-card h3 {
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      font-size: 1.45rem;
-    }
+.quick-card h3 {
+text-transform: uppercase;
+margin-bottom: 10px;
+font-size: 1.45rem;
+}
 
-    .quick-card p {
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
+.quick-card p {
+color: var(--muted);
+line-height: 1.6;
+margin-bottom: 18px;
+}
 
-    .quick-card a {
-      color: var(--gold);
-      text-transform: uppercase;
-      font-weight: 950;
-      letter-spacing: .07em;
-      font-size: .82rem;
-    }
+.quick-card a {
+color: var(--gold);
+text-transform: uppercase;
+font-weight: 950;
+letter-spacing: .07em;
+font-size: .82rem;
+}
 
-    .rent-final-cta {
-      padding: 100px 5vw;
-      text-align: center;
-      background: radial-gradient(circle at center, rgba(201,31,47,.34), transparent 30%), #020817;
-    }
+.rent-final-cta {
+padding: 100px 5vw;
+text-align: center;
+background: radial-gradient(circle at center, rgba(201,31,47,.34), transparent 30%), #020817;
+}
 
-    .rent-final-cta h2 {
-      font-size: clamp(2.6rem, 5vw, 5.4rem);
-      line-height: .92;
-      text-transform: uppercase;
-      letter-spacing: -.06em;
-      max-width: 900px;
-      margin: 0 auto 24px;
-    }
+.rent-final-cta h2 {
+font-size: clamp(2.6rem, 5vw, 5.4rem);
+line-height: .92;
+text-transform: uppercase;
+letter-spacing: -.06em;
+max-width: 900px;
+margin: 0 auto 24px;
+}
 
-    .rent-final-cta p {
-      color: var(--muted);
-      max-width: 720px;
-      margin: 0 auto 30px;
-      line-height: 1.7;
-    }
+.rent-final-cta p {
+color: var(--muted);
+max-width: 720px;
+margin: 0 auto 30px;
+line-height: 1.7;
+}
 
-    @media(max-width: 1000px) {
-      .rent-layout,
-      .quick-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+@media(max-width: 1000px) {
+.rent-layout,
+.quick-grid {
+grid-template-columns: 1fr 1fr;
+}
 
-      .rent-layout {
-        grid-template-columns: 1fr;
-      }
-    }
+.rent-layout {
+grid-template-columns: 1fr;
+}
+}
 
-    @media(max-width: 650px) {
-      .rent-hero {
-        padding: 130px 5vw 80px;
-      }
+@media(max-width: 650px) {
+.rent-hero {
+padding: 130px 5vw 80px;
+}
 
-      .quick-grid {
-        grid-template-columns: 1fr;
-      }
+.quick-grid {
+grid-template-columns: 1fr;
+}
 
-      .rent-step {
-        grid-template-columns: 1fr;
-      }
+.rent-step {
+grid-template-columns: 1fr;
+}
 
-      .embed-shell {
-        min-height: 460px;
-        padding: 16px;
-      }
+.embed-shell {
+min-height: 460px;
+padding: 16px;
+}
 
-      .embed-preview {
-        padding: 24px;
-      }
-    }
-  </style>
+.embed-preview {
+padding: 24px;
+}
+}
+</style>
 </head>
 
 <body>
-  <div class="preloader">
-    <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo">
-  </div>
+<div class="preloader">
+<img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo">
+</div>
 
-  <header class="site-header">
-    <a href="../" class="brand">
-      <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Boat and RV Storage Complex">
-    </a>
+<header class="site-header">
+<a href="../" class="brand">
+<img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Boat and RV Storage Complex">
+</a>
 
-    <nav class="nav-links">
+<nav class="nav-links">
+      <a href="../#overview">Overview</a>
+      <a href="../storage-units/">Storage Options</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../location/">Location</a>
+      <a href="../contact/">Contact</a>
+    </nav>
   <a href="../#overview">Overview</a>
   <a href="../storage-units/">Storage Options</a>
   <a href="../pricing/">Pricing</a>
@@ -323,158 +329,152 @@
   <a href="../contact/">Contact</a>
 </nav>
 
-    <a href="#rental-system" class="header-cta">Rent Now</a>
-  </header>
+<a href="#rental-system" class="header-cta">Rent Now</a>
+</header>
 
-  <main>
-    <section class="rent-hero">
-      <div class="rent-hero-content reveal">
-        <p class="eyebrow">Rent Storage Online</p>
-        <h1>Reserve your space in minutes.</h1>
-        <p>
-          Choose your storage type, review availability, and start the rental process for boat,
-          RV, trailer, camper, or vehicle storage near Table Rock Lake.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#rental-system" class="btn btn-red">Start Rental</a>
-          <a href="../pricing/" class="btn btn-glass">View Pricing</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="rent-section" id="rental-system">
-      <div class="rent-layout">
-        <div class="rent-panel reveal">
-          <p class="eyebrow">How It Works</p>
-          <h2>Simple online rental flow.</h2>
-          <p>
-            This page is designed to connect directly into the storage management system once
-            the Storganise embed code is ready.
-          </p>
-
-          <div class="rent-steps">
-            <div class="rent-step">
-              <strong>1</strong>
-              <div>
-                <h3>Choose a storage type</h3>
-                <p>Fully enclosed, enclosed, covered, or open-air parking.</p>
-              </div>
-            </div>
-
-            <div class="rent-step">
-              <strong>2</strong>
-              <div>
-                <h3>Check availability</h3>
-                <p>Review available spaces and select the option that fits your vehicle.</p>
-              </div>
-            </div>
-
-            <div class="rent-step">
-              <strong>3</strong>
-              <div>
-                <h3>Start your rental</h3>
-                <p>Complete your move-in details and payment through the rental system.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="embed-panel reveal">
-          <p class="eyebrow">Rental Portal</p>
-          <h2>Online booking will live here.</h2>
-          <p>
-            Once the storage software is connected, customers will use this section to view
-            availability, reserve spaces, and begin their rental.
-          </p>
-
-          <div class="embed-shell">
-            <h3>Secure Online Rental Portal</h3>
-
+<main>
+<section class="rent-hero">
+<div class="rent-hero-content reveal">
+<p class="eyebrow">Rent Storage Online</p>
+<h1>Reserve your space in minutes.</h1>
 <p>
-  View availability, choose a storage option, and begin the rental process through the
-  Eagle Rock Boat and RV Storage online rental portal.
+Choose your storage type, review availability, and start the rental process for boat,
+RV, trailer, camper, or vehicle storage near Table Rock Lake.
 </p>
 
-<iframe
-  src="https://eagle-rock-boat-and-rv-storage-complex-trial.storeganise.com/"
-  title="Eagle Rock Boat and RV Storage Rental Portal"
-  style="width:100%; min-height:850px; border:0; border-radius:18px; background:white; margin:18px 0;"
-  loading="lazy">
-</iframe>
+<div class="hero-actions">
+<a href="#rental-system" class="btn btn-red">Start Rental</a>
+<a href="../pricing/" class="btn btn-glass">View Pricing</a>
+</div>
+</div>
+</section>
 
-<a
-  href="https://eagle-rock-boat-and-rv-storage-complex-trial.storeganise.com/"
-  class="btn btn-red"
-  target="_blank"
-  rel="noopener">
-  Open Rental Portal In New Tab
-</a>
+<section class="rent-section" id="rental-system">
+<div class="rent-layout">
+<div class="rent-panel reveal">
+<p class="eyebrow">How It Works</p>
+<h2>Simple online rental flow.</h2>
+<p>
+This page is designed to connect directly into the storage management system once
+the Storganise embed code is ready.
+</p>
+
+<div class="rent-steps">
+<div class="rent-step">
+<strong>1</strong>
+<div>
+<h3>Choose a storage type</h3>
+<p>Fully enclosed, enclosed, covered, or open-air parking.</p>
+</div>
+</div>
+
+<div class="rent-step">
+<strong>2</strong>
+<div>
+<h3>Check availability</h3>
+<p>Review available spaces and select the option that fits your vehicle.</p>
+</div>
+</div>
+
+<div class="rent-step">
+<strong>3</strong>
+<div>
+<h3>Start your rental</h3>
+<p>Complete your move-in details and payment through the rental system.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="embed-panel reveal">
+<p class="eyebrow">Rental Portal</p>
+<h2>Online booking will live here.</h2>
+<p>
+Once the storage software is connected, customers will use this section to view
+availability, reserve spaces, and begin their rental.
+</p>
+
+<div class="embed-shell">
+<div class="embed-preview">
+<img class="mini-logo" src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo">
+<h3>Storage Rental Portal</h3>
+<p>
+Fully enclosed, enclosed, covered, and open-air storage options will be available
+through the online rental system.
+</p>
+
+<a href="../contact/" class="btn btn-red">Check Availability</a>
 
 <p class="embed-note">
-  If the rental portal does not display above, use the button to open it in a new tab.
+Storganise embed code will be placed inside this rental portal section.
 </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="quick-options">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Not Sure What To Choose?</p>
-        <h2>Compare options before you rent.</h2>
-      </div>
+<!--
+               STORGANISE EMBED GOES HERE LATER.
+               Replace the .embed-preview content above with the embed code when ready.
+             -->
+</div>
+</div>
+</div>
+</div>
+</section>
 
-      <div class="quick-grid">
-        <div class="quick-card reveal">
-          <h3>Fully Enclosed</h3>
-          <p>Maximum coverage for boats, RVs, trailers, and valuable vehicles.</p>
-          <a href="../storage-units/">View Details</a>
-        </div>
+<section class="quick-options">
+<div class="section-heading reveal">
+<p class="eyebrow">Not Sure What To Choose?</p>
+<h2>Compare options before you rent.</h2>
+</div>
 
-        <div class="quick-card reveal">
-          <h3>Enclosed</h3>
-          <p>Protected storage with large access openings and practical monthly pricing.</p>
-          <a href="../storage-units/">View Details</a>
-        </div>
+<div class="quick-grid">
+<div class="quick-card reveal">
+<h3>Fully Enclosed</h3>
+<p>Maximum coverage for boats, RVs, trailers, and valuable vehicles.</p>
+<a href="../storage-units/">View Details</a>
+</div>
 
-        <div class="quick-card reveal">
-          <h3>Covered</h3>
-          <p>Overhead protection for boats, trailers, campers, and RVs.</p>
-          <a href="../storage-units/">View Details</a>
-        </div>
+<div class="quick-card reveal">
+<h3>Enclosed</h3>
+<p>Protected storage with large access openings and practical monthly pricing.</p>
+<a href="../storage-units/">View Details</a>
+</div>
 
-        <div class="quick-card reveal">
-          <h3>Open-Air</h3>
-          <p>Affordable outdoor parking with multiple length options.</p>
-          <a href="../pricing/">View Pricing</a>
-        </div>
-      </div>
-    </section>
+<div class="quick-card reveal">
+<h3>Covered</h3>
+<p>Overhead protection for boats, trailers, campers, and RVs.</p>
+<a href="../storage-units/">View Details</a>
+</div>
 
-    <section class="rent-final-cta">
-      <div class="reveal">
-        <p class="eyebrow">Need Help?</p>
-        <h2>Questions before renting?</h2>
-        <p>
-          Contact Eagle Rock Boat and RV Storage Complex for help choosing the right space,
-          checking availability, or understanding move-in details.
-        </p>
+<div class="quick-card reveal">
+<h3>Open-Air</h3>
+<p>Affordable outdoor parking with multiple length options.</p>
+<a href="../pricing/">View Pricing</a>
+</div>
+</div>
+</section>
 
-        <div class="hero-actions" style="justify-content:center;">
-          <a href="../contact/" class="btn btn-red">Contact Us</a>
-          <a href="../storage-units/" class="btn btn-glass">Compare Storage Options</a>
-        </div>
-      </div>
-    </section>
-  </main>
+<section class="rent-final-cta">
+<div class="reveal">
+<p class="eyebrow">Need Help?</p>
+<h2>Questions before renting?</h2>
+<p>
+Contact Eagle Rock Boat and RV Storage Complex for help choosing the right space,
+checking availability, or understanding move-in details.
+</p>
 
-  <footer>
-    <p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
-    <p>Eagle Rock, Missouri</p>
-    <p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
-  </footer>
+<div class="hero-actions" style="justify-content:center;">
+<a href="../contact/" class="btn btn-red">Contact Us</a>
+<a href="../storage-units/" class="btn btn-glass">Compare Storage Options</a>
+</div>
+</div>
+</section>
+</main>
 
-  <script src="../assets/js/main.js"></script>
+<footer>
+<p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
+<p>Eagle Rock, Missouri</p>
+<p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
 </body>
 </html>

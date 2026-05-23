@@ -1,2 +1,505 @@
-<h1>Frequently Asked Questions</h1>
-<p>Common questions about access hours, payment methods, security, rules, cancellations, and insurance.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FAQ | Eagle Rock Boat & RV Storage Complex</title>
+  <meta name="description" content="Frequently asked questions about boat, RV, trailer, camper, covered, enclosed, and open-air storage at Eagle Rock Boat and RV Storage Complex." />
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    .faq-hero {
+      min-height: 72vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 150px 5vw 90px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(2,8,23,.98), rgba(2,8,23,.78), rgba(2,8,23,.34)),
+        linear-gradient(to top, rgba(2,8,23,1), rgba(2,8,23,.18)),
+        url('../assets/images/trl-hero.png') center right/cover no-repeat;
+    }
+
+    .faq-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 24%, rgba(244,199,108,.24), transparent 32%),
+        radial-gradient(circle at 18% 32%, rgba(201,31,47,.22), transparent 35%);
+      pointer-events: none;
+    }
+
+    .faq-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 930px;
+    }
+
+    .faq-hero h1 {
+      font-size: clamp(3.4rem, 7vw, 7rem);
+    }
+
+    .faq-hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.18rem;
+      line-height: 1.7;
+      margin: 24px 0 32px;
+    }
+
+    .faq-section {
+      padding: 95px 5vw;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(201,31,47,.18), transparent 30%),
+        radial-gradient(circle at 82% 24%, rgba(37,99,235,.22), transparent 34%),
+        var(--dark);
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .faq-sidebar,
+    .faq-list {
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
+      box-shadow: 0 35px 95px rgba(0,0,0,.38);
+      padding: 34px;
+    }
+
+    .faq-sidebar h2,
+    .faq-list h2 {
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: .92;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .faq-sidebar p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .quick-links {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .quick-links a {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(2,8,23,.42);
+      border: 1px solid rgba(255,255,255,.12);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .84rem;
+      transition: .25s ease;
+    }
+
+    .quick-links a:hover {
+      background: rgba(201,31,47,.24);
+      border-color: rgba(201,31,47,.45);
+      transform: translateX(6px);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      padding: 24px 0;
+    }
+
+    .faq-item:first-of-type {
+      padding-top: 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: 0;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      text-align: left;
+      cursor: pointer;
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: -.025em;
+    }
+
+    .faq-question span {
+      color: var(--gold);
+      font-size: 2rem;
+      line-height: 1;
+      transition: .25s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+
+    .faq-answer p {
+      color: var(--muted);
+      line-height: 1.7;
+      padding-top: 16px;
+      max-width: 850px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 260px;
+    }
+
+    .faq-item.active .faq-question span {
+      transform: rotate(45deg);
+      color: var(--red);
+    }
+
+    .faq-highlight {
+      padding: 90px 5vw;
+      text-align: center;
+      background:
+        linear-gradient(rgba(2,8,23,.88), rgba(2,8,23,.94)),
+        url('../assets/images/trl-hero.png') center/cover no-repeat;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .highlight-card {
+      padding: 30px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.13);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 25px 70px rgba(0,0,0,.28);
+      text-align: left;
+    }
+
+    .highlight-card strong {
+      display: block;
+      color: var(--gold);
+      font-size: 2.1rem;
+      margin-bottom: 10px;
+    }
+
+    .highlight-card h3 {
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .highlight-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .faq-final-cta {
+      padding: 100px 5vw;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(201,31,47,.34), transparent 30%), #020817;
+    }
+
+    .faq-final-cta h2 {
+      font-size: clamp(2.6rem, 5vw, 5.4rem);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+
+    .faq-final-cta p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    @media(max-width: 950px) {
+      .faq-layout,
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 650px) {
+      .faq-hero {
+        padding: 130px 5vw 80px;
+      }
+
+      .faq-sidebar,
+      .faq-list {
+        padding: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo">
+  </div>
+
+  <header class="site-header">
+    <a href="../" class="brand">
+      <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Boat and RV Storage Complex">
+    </a>
+
+    <nav class="nav-links">
+      <a href="../#overview">Overview</a>
+      <a href="../storage-units/">Storage Options</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../rent-now/">Rent Now</a>
+      <a href="../location/">Location</a>
+      <a href="../contact/">Contact</a>
+    </nav>
+
+    <a href="../rent-now/" class="header-cta">Check Availability</a>
+  </header>
+
+  <main>
+    <section class="faq-hero">
+      <div class="faq-hero-content reveal">
+        <p class="eyebrow">Frequently Asked Questions</p>
+        <h1>Storage answers before you rent.</h1>
+        <p>
+          Get quick answers about storage types, access, pricing, move-in details,
+          insurance, and the $30 open-air move-in special.
+        </p>
+
+        <div class="hero-actions">
+          <a href="../rent-now/" class="btn btn-red">Check Availability</a>
+          <a href="../storage-units/" class="btn btn-glass">Compare Storage Options</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="faq-layout">
+        <aside class="faq-sidebar reveal">
+          <p class="eyebrow">Quick Help</p>
+          <h2>Find what you need.</h2>
+          <p>
+            Eagle Rock Boat and RV Storage Complex offers storage options for boats,
+            RVs, campers, trailers, and extra vehicles near Table Rock Lake.
+          </p>
+
+          <div class="quick-links">
+            <a href="../storage-units/">Storage Options</a>
+            <a href="../pricing/">Pricing</a>
+            <a href="../location/">Location</a>
+            <a href="../rent-now/">Rent Now</a>
+            <a href="../contact/">Contact</a>
+          </div>
+        </aside>
+
+        <section class="faq-list reveal">
+          <p class="eyebrow">Common Questions</p>
+          <h2>What customers ask most.</h2>
+
+          <div class="faq-item active">
+            <button class="faq-question">
+              What can I store here?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                The facility is designed for boats, RVs, campers, travel trailers,
+                utility trailers, extra vehicles, and similar storage needs. Customers
+                can choose from fully enclosed, enclosed, covered, and open-air options.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do tenants have 24/7 access?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Tenants have access 24 hours a day, 7 days a week. Business support
+                hours are Monday through Friday from 9:00 AM to 5:00 PM.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What storage types are available?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Storage options include fully enclosed units, enclosed units, covered
+                spaces, and open-air parking. Fully enclosed and enclosed units have
+                10' wide and 14' tall doorways.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What sizes are available?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Fully enclosed and enclosed units are available in 14' x 30' and
+                14' x 40'. Covered spaces are 12' x 30'. Open-air spaces are 12'
+                wide with 20', 30', 40', and 60' depth options.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How does the $30 move-in special work?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                The $30 move-in special applies to qualifying open-air parking when
+                secured with a 6-month contract. Standard monthly rates still apply
+                after the move-in special.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Is insurance required?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Tenants must carry insurance on stored vehicles and property.
+                Final insurance language will be provided in the rental documents.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How is billing handled?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Billing is monthly. Move-in requires 3 months paid in advance. Customers
+                who pay cash one year in advance receive a 10% discount.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What are the late fees?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Late fees are $5 on the first day late, then $2 for each following day
+                until the account is brought current.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="faq-highlight">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Fast Facts</p>
+        <h2>Storage built around simple access.</h2>
+      </div>
+
+      <div class="highlight-grid">
+        <div class="highlight-card reveal">
+          <strong>202</strong>
+          <h3>Total Spaces</h3>
+          <p>Fully enclosed, enclosed, covered, and open-air storage options.</p>
+        </div>
+
+        <div class="highlight-card reveal">
+          <strong>24/7</strong>
+          <h3>Tenant Access</h3>
+          <p>Access stored property any time, day or night.</p>
+        </div>
+
+        <div class="highlight-card reveal">
+          <strong>$30</strong>
+          <h3>Move-In Special</h3>
+          <p>Available for qualifying open-air parking with a 6-month contract.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-final-cta">
+      <div class="reveal">
+        <p class="eyebrow">Still Have Questions?</p>
+        <h2>Check availability or ask about the right space.</h2>
+        <p>
+          Contact Eagle Rock Boat and RV Storage Complex for current availability,
+          move-in details, and help choosing the best storage option.
+        </p>
+
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="../rent-now/" class="btn btn-red">Check Availability</a>
+          <a href="../contact/" class="btn btn-glass">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
+    <p>19114 State Hwy E, Eagle Rock, MO 65641</p>
+    <p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const button = item.querySelector('.faq-question');
+
+      button.addEventListener('click', () => {
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

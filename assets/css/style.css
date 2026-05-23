@@ -621,7 +621,12 @@ footer {
     flex-direction: column;
   }
 }
-/* Brighter cinematic hero images on all pages */
+/* Clearer cinematic hero images across the site */
+.hero-image-layer,
+.hero-video-layer {
+  filter: saturate(1.2) contrast(1.08) brightness(1.08) !important;
+}
+
 .units-page-hero,
 .pricing-hero,
 .contact-hero,
@@ -631,44 +636,42 @@ footer {
   background:
     linear-gradient(
       90deg,
-      rgba(2,8,23,.92) 0%,
-      rgba(2,8,23,.70) 36%,
-      rgba(2,8,23,.28) 68%,
-      rgba(2,8,23,.08) 100%
+      rgba(2,8,23,.88) 0%,
+      rgba(2,8,23,.58) 34%,
+      rgba(2,8,23,.16) 68%,
+      rgba(2,8,23,0) 100%
     ),
     linear-gradient(
       to top,
-      rgba(2,8,23,.96) 0%,
-      rgba(2,8,23,.36) 32%,
-      rgba(2,8,23,.10) 100%
+      rgba(2,8,23,.88) 0%,
+      rgba(2,8,23,.22) 34%,
+      rgba(2,8,23,0) 100%
     ),
     url("../images/trl-hero.png") center right/cover no-repeat !important;
 }
 
-/* Let the sun and lake show through more clearly */
 .units-page-hero::after,
 .pricing-hero::after,
 .contact-hero::after,
 .location-hero::after,
 .rent-hero::after,
 .faq-hero::after {
-  opacity: .55;
+  opacity: .25 !important;
 }
 
-/* Homepage hero image visibility */
 .hero-overlay {
   background:
     linear-gradient(
       90deg,
-      rgba(2,8,23,.95) 0%,
-      rgba(2,8,23,.76) 34%,
-      rgba(2,8,23,.34) 64%,
-      rgba(2,8,23,.08) 100%
+      rgba(2,8,23,.88) 0%,
+      rgba(2,8,23,.60) 34%,
+      rgba(2,8,23,.18) 66%,
+      rgba(2,8,23,0) 100%
     ),
     linear-gradient(
       to top,
-      rgba(2,8,23,.96) 0%,
-      rgba(2,8,23,.44) 28%,
-      rgba(2,8,23,.12) 100%
+      rgba(2,8,23,.9) 0%,
+      rgba(2,8,23,.26) 30%,
+      rgba(2,8,23,0) 100%
     ) !important;
 }

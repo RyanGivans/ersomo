@@ -1,71 +1,670 @@
-.logo-glow {
-  filter:
-    drop-shadow(0 0 18px rgba(255,255,255,.35))
-    drop-shadow(0 0 45px rgba(201,31,47,.45))
-    drop-shadow(0 0 70px rgba(37,99,235,.35));
-  animation: floatLogo 5s ease-in-out infinite;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eagle Rock Boat & RV Storage Complex</title>
 
-@keyframes floatLogo {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-10px) scale(1.03); }
-}
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:#020817;
+      color:white;
+      overflow-x:hidden;
+    }
+    a { color:inherit; text-decoration:none; }
 
-.hero {
-  background:
-    linear-gradient(90deg, rgba(2,8,23,.92), rgba(2,8,23,.62), rgba(2,8,23,.96)),
-    url("assets/images/storage-hero.jpg") center/cover no-repeat;
-}
+    :root {
+      --navy:#061733;
+      --blue:#123d85;
+      --red:#c91f2f;
+      --gold:#f5c76b;
+      --ice:#dbeafe;
+    }
 
-.hero::before {
-  background:
-    radial-gradient(circle at 70% 30%, rgba(201,31,47,.45), transparent 35%),
-    radial-gradient(circle at 20% 20%, rgba(37,99,235,.45), transparent 38%);
-  opacity:1;
-  animation: pulseLight 7s ease-in-out infinite alternate;
-}
+    .nav {
+      position:fixed;
+      top:0; left:0;
+      width:100%;
+      z-index:999;
+      padding:18px 6vw;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:linear-gradient(to bottom, rgba(2,8,23,.95), rgba(2,8,23,.35));
+      backdrop-filter:blur(16px);
+    }
 
-@keyframes pulseLight {
-  from { opacity:.65; transform:scale(1); }
-  to { opacity:1; transform:scale(1.08); }
-}
+    .nav img {
+      width:72px;
+      filter:drop-shadow(0 0 25px rgba(255,255,255,.35));
+    }
 
-.photo-strip {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-  padding:0 6vw 110px;
-  background:#020817;
-}
+    .nav-links {
+      display:flex;
+      gap:28px;
+      text-transform:uppercase;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.1em;
+    }
 
-.photo-tile {
-  min-height:320px;
-  border-radius:32px;
-  overflow:hidden;
-  position:relative;
-  background:center/cover no-repeat;
-  box-shadow:0 30px 80px rgba(0,0,0,.45);
-  transform:translateY(0);
-  transition:.35s ease;
-}
+    .nav-cta {
+      background:var(--red);
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:900;
+      box-shadow:0 0 40px rgba(201,31,47,.5);
+    }
 
-.photo-tile:hover {
-  transform:translateY(-12px) scale(1.02);
-}
+    .hero {
+      min-height:100vh;
+      position:relative;
+      display:flex;
+      align-items:center;
+      padding:135px 6vw 80px;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg, rgba(2,8,23,.95), rgba(2,8,23,.65), rgba(2,8,23,.98)),
+        radial-gradient(circle at 75% 35%, rgba(201,31,47,.45), transparent 34%),
+        radial-gradient(circle at 18% 18%, rgba(37,99,235,.55), transparent 35%),
+        linear-gradient(135deg, #020817, #08245a 52%, #020817);
+    }
 
-.photo-tile::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to top, rgba(2,8,23,.85), transparent 65%);
-}
+    .hero::before {
+      content:"";
+      position:absolute;
+      inset:-15%;
+      background:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:70px 70px;
+      transform:perspective(800px) rotateX(58deg) translateY(80px);
+      animation:gridMove 14s linear infinite;
+      opacity:.45;
+    }
 
-.photo-tile span {
-  position:absolute;
-  left:24px;
-  bottom:24px;
-  z-index:2;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-}
+    .hero::after {
+      content:"";
+      position:absolute;
+      right:-12vw;
+      top:13vh;
+      width:55vw;
+      height:55vw;
+      background:url("assets/images/ersofmo-logo.jpg") center/contain no-repeat;
+      opacity:.13;
+      filter:drop-shadow(0 0 80px rgba(255,255,255,.45));
+      animation:slowFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes gridMove {
+      from { background-position:0 0; }
+      to { background-position:0 140px; }
+    }
+
+    @keyframes slowFloat {
+      0%,100% { transform:translateY(0) scale(1); }
+      50% { transform:translateY(-24px) scale(1.04); }
+    }
+
+    .hero-content {
+      position:relative;
+      z-index:2;
+      max-width:900px;
+    }
+
+    .hero-logo {
+      width:190px;
+      margin-bottom:28px;
+      border-radius:50%;
+      background:white;
+      padding:6px;
+      box-shadow:0 35px 100px rgba(0,0,0,.7);
+      animation:logoFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%,100% { transform:translateY(0); }
+      50% { transform:translateY(-10px); }
+    }
+
+    .eyebrow {
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      font-size:.82rem;
+      font-weight:950;
+      margin-bottom:18px;
+    }
+
+    h1 {
+      font-size:clamp(3.5rem, 8vw, 8rem);
+      line-height:.86;
+      letter-spacing:-.075em;
+      text-transform:uppercase;
+      max-width:1000px;
+    }
+
+    .hero-copy {
+      max-width:690px;
+      color:#dbeafe;
+      font-size:1.25rem;
+      line-height:1.7;
+      margin:32px 0;
+    }
+
+    .buttons {
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+
+    .btn {
+      padding:17px 26px;
+      border-radius:999px;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+      transition:.25s ease;
+    }
+
+    .btn-primary {
+      background:var(--red);
+      box-shadow:0 0 45px rgba(201,31,47,.6);
+    }
+
+    .btn-primary:hover {
+      transform:translateY(-5px);
+      box-shadow:0 0 70px rgba(201,31,47,.85);
+    }
+
+    .btn-glass {
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.25);
+      backdrop-filter:blur(14px);
+    }
+
+    .btn-glass:hover {
+      background:white;
+      color:#061733;
+      transform:translateY(-5px);
+    }
+
+    .hero-stats {
+      margin-top:44px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+      max-width:700px;
+    }
+
+    .stat {
+      padding:24px;
+      border-radius:24px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter:blur(18px);
+      box-shadow:0 25px 70px rgba(0,0,0,.35);
+    }
+
+    .stat strong {
+      display:block;
+      font-size:2.3rem;
+    }
+
+    .stat span {
+      color:#adc1dd;
+      font-weight:800;
+    }
+
+    .promo {
+      padding:22px 6vw;
+      background:linear-gradient(90deg, var(--red), #7f1020, var(--blue));
+      text-align:center;
+      text-transform:uppercase;
+      font-weight:950;
+      letter-spacing:.08em;
+      box-shadow:0 20px 70px rgba(201,31,47,.28);
+    }
+
+    .cinematic-strip {
+      padding:100px 6vw;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:26px;
+      background:
+        radial-gradient(circle at 80% 30%, rgba(201,31,47,.22), transparent 30%),
+        #020817;
+    }
+
+    .visual-card {
+      min-height:520px;
+      border-radius:38px;
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.03)),
+        radial-gradient(circle at 65% 25%, rgba(245,199,107,.28), transparent 34%),
+        linear-gradient(135deg, #061733, #020817);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 40px 110px rgba(0,0,0,.45);
+    }
+
+    .visual-card::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        url("assets/images/ersofmo-logo.jpg") center/55% no-repeat;
+      opacity:.16;
+      filter:drop-shadow(0 0 60px rgba(255,255,255,.5));
+    }
+
+    .visual-card::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to top, rgba(2,8,23,.92), transparent 55%),
+        linear-gradient(120deg, rgba(201,31,47,.25), transparent 45%);
+    }
+
+    .visual-card-content {
+      position:absolute;
+      left:34px;
+      right:34px;
+      bottom:34px;
+      z-index:2;
+    }
+
+    .visual-card-content h2 {
+      font-size:clamp(2.2rem, 4vw, 4.6rem);
+      line-height:.95;
+      letter-spacing:-.06em;
+      text-transform:uppercase;
+    }
+
+    .mini-grid {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:26px;
+    }
+
+    .mini-card {
+      min-height:247px;
+      border-radius:34px;
+      padding:30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.04)),
+        radial-gradient(circle at top right, rgba(37,99,235,.4), transparent 35%);
+      border:1px solid rgba(255,255,255,.13);
+      box-shadow:0 30px 90px rgba(0,0,0,.35);
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      transition:.3s ease;
+    }
+
+    .mini-card:hover {
+      transform:translateY(-10px) scale(1.02);
+      border-color:rgba(245,199,107,.6);
+    }
+
+    .mini-card h3 {
+      font-size:2rem;
+      margin-bottom:10px;
+    }
+
+    .mini-card p {
+      color:#c7d7ee;
+      line-height:1.6;
+    }
+
+    .section {
+      padding:110px 6vw;
+    }
+
+    .section-head {
+      max-width:900px;
+      margin-bottom:48px;
+    }
+
+    .section-head h2 {
+      font-size:clamp(2.6rem, 5vw, 5.3rem);
+      line-height:.92;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+    }
+
+    .section-head p {
+      color:#c7d7ee;
+      font-size:1.15rem;
+      line-height:1.7;
+      margin-top:20px;
+    }
+
+    .category-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .category-card {
+      min-height:360px;
+      padding:30px;
+      border-radius:34px;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.035)),
+        #061733;
+      border:1px solid rgba(255,255,255,.13);
+      box-shadow:0 30px 90px rgba(0,0,0,.35);
+      transition:.3s ease;
+    }
+
+    .category-card:hover {
+      transform:translateY(-14px);
+      box-shadow:0 45px 120px rgba(0,0,0,.55);
+    }
+
+    .category-card::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top, rgba(245,199,107,.28), transparent 38%);
+      opacity:.7;
+    }
+
+    .category-card h3,
+    .category-card p,
+    .category-card a {
+      position:relative;
+      z-index:2;
+    }
+
+    .category-card h3 {
+      font-size:2rem;
+      margin-bottom:16px;
+    }
+
+    .category-card p {
+      color:#c7d7ee;
+      line-height:1.6;
+      margin-bottom:24px;
+    }
+
+    .category-card a {
+      color:var(--gold);
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .story {
+      background:
+        linear-gradient(rgba(2,8,23,.82), rgba(2,8,23,.9)),
+        radial-gradient(circle at 30% 20%, rgba(201,31,47,.28), transparent 32%),
+        radial-gradient(circle at 75% 60%, rgba(37,99,235,.28), transparent 38%);
+    }
+
+    .story-inner {
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:42px;
+      align-items:center;
+    }
+
+    .badge-wall {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .badge {
+      padding:28px;
+      border-radius:28px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      text-align:center;
+    }
+
+    .badge strong {
+      display:block;
+      font-size:2.4rem;
+      color:var(--gold);
+      margin-bottom:6px;
+    }
+
+    .final-cta {
+      min-height:75vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:
+        radial-gradient(circle at center, rgba(201,31,47,.38), transparent 28%),
+        linear-gradient(180deg, #020817, #061733);
+    }
+
+    .final-cta div {
+      max-width:850px;
+    }
+
+    .final-cta h2 {
+      font-size:clamp(2.8rem, 6vw, 6rem);
+      line-height:.9;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+      margin-bottom:26px;
+    }
+
+    footer {
+      background:#01040d;
+      padding:38px 6vw;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      color:#9fb0c8;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .reveal {
+      opacity:0;
+      transform:translateY(38px);
+      transition:1s ease;
+    }
+
+    .reveal.visible {
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (max-width:1000px) {
+      .nav-links { display:none; }
+      .cinematic-strip,
+      .story-inner { grid-template-columns:1fr; }
+      .category-grid { grid-template-columns:1fr 1fr; }
+    }
+
+    @media (max-width:650px) {
+      .nav { padding:14px 5vw; }
+      .nav img { width:56px; }
+      .nav-cta { font-size:.75rem; padding:10px 13px; }
+      .hero { padding:120px 5vw 70px; }
+      .hero-logo { width:145px; }
+      .hero-stats,
+      .category-grid,
+      .badge-wall { grid-template-columns:1fr; }
+      .section, .cinematic-strip { padding:78px 5vw; }
+      h1 { font-size:3.35rem; }
+      .hero-copy { font-size:1.05rem; }
+      footer { flex-direction:column; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <a href="#top">
+      <img src="assets/images/ersofmo-logo.jpg" alt="Eagle Rock Boat and RV Storage Complex">
+    </a>
+
+    <nav class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="pricing/">Pricing</a>
+      <a href="storage-units/">Units</a>
+      <a href="location/">Location</a>
+      <a href="contact/">Contact</a>
+    </nav>
+
+    <a href="contact/" class="nav-cta">Check Availability</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-content reveal">
+        <img class="hero-logo" src="assets/images/ersofmo-logo.jpg" alt="Eagle Rock Boat and RV Storage Complex">
+
+        <p class="eyebrow">Eagle Rock, Missouri</p>
+
+        <h1>Premium Boat & RV Storage Near the Water.</h1>
+
+        <p class="hero-copy">
+          A secure, spacious storage complex built for lake life — with fully enclosed,
+          enclosed, covered, and open-air options for boats, RVs, campers, trailers,
+          and extra vehicles.
+        </p>
+
+        <div class="buttons">
+          <a href="storage-units/" class="btn btn-primary">Explore Storage Options</a>
+          <a href="contact/" class="btn btn-glass">Check Availability</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat"><strong>202</strong><span>Total Spaces</span></div>
+          <div class="stat"><strong>24/7</strong><span>Tenant Access</span></div>
+          <div class="stat"><strong>$30</strong><span>Move-In Special</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="promo">
+      $30 Move-In Special · Open-air parking with a 6-month contract
+    </div>
+
+    <section class="cinematic-strip" id="overview">
+      <div class="visual-card reveal">
+        <div class="visual-card-content">
+          <p class="eyebrow">Built For Lake Life</p>
+          <h2>Storage with presence, protection, and space.</h2>
+        </div>
+      </div>
+
+      <div class="mini-grid">
+        <div class="mini-card reveal">
+          <h3>Boat Storage</h3>
+          <p>Storage options sized for boats, trailers, and lake-season convenience.</p>
+        </div>
+
+        <div class="mini-card reveal">
+          <h3>RV Storage</h3>
+          <p>Large spaces for motorhomes, campers, travel trailers, and recreational vehicles.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Storage Options</p>
+        <h2>Choose the right level of protection.</h2>
+        <p>
+          Eagle Rock Boat and RV Storage Complex offers multiple storage types
+          designed for different vehicles, budgets, and protection needs.
+        </p>
+      </div>
+
+      <div class="category-grid">
+        <article class="category-card reveal">
+          <h3>Fully Enclosed</h3>
+          <p>Maximum coverage for boats, RVs, trailers, and higher-value storage needs.</p>
+          <a href="storage-units/">View Units</a>
+        </article>
+
+        <article class="category-card reveal">
+          <h3>Enclosed</h3>
+          <p>Protected storage with large doors and practical monthly pricing.</p>
+          <a href="storage-units/">View Units</a>
+        </article>
+
+        <article class="category-card reveal">
+          <h3>Covered</h3>
+          <p>Overhead protection for boats, RVs, trailers, and seasonal storage.</p>
+          <a href="storage-units/">View Units</a>
+        </article>
+
+        <article class="category-card reveal">
+          <h3>Open-Air</h3>
+          <p>Affordable parking for larger vehicles, trailers, boats, and RVs.</p>
+          <a href="pricing/">View Pricing</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section story">
+      <div class="story-inner">
+        <div class="badge-wall reveal">
+          <div class="badge"><strong>16</strong><span>Fully Enclosed Units</span></div>
+          <div class="badge"><strong>16</strong><span>Enclosed Units</span></div>
+          <div class="badge"><strong>20</strong><span>Covered Units</span></div>
+          <div class="badge"><strong>150</strong><span>Open-Air Spaces</span></div>
+        </div>
+
+        <div class="section-head reveal">
+          <p class="eyebrow">Simple. Secure. Local.</p>
+          <h2>Designed for people who need more than a parking spot.</h2>
+          <p>
+            From weekend lake trips to long-term vehicle storage, the complex is
+            built around convenience, room to maneuver, and easy access whenever
+            tenants need their equipment.
+          </p>
+
+          <div class="buttons">
+            <a href="pricing/" class="btn btn-primary">View Pricing</a>
+            <a href="location/" class="btn btn-glass">View Location</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="reveal">
+        <p class="eyebrow">Reserve Your Space</p>
+        <h2>Premium storage for boats, RVs, trailers, and lake life.</h2>
+        <a href="contact/" class="btn btn-primary">Check Availability</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
+    <p>Eagle Rock, Missouri</p>
+    <p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

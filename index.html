@@ -3,246 +3,188 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Eagle Rock Boat & RV Storage Complex</title>
+  <meta name="description" content="Premium boat and RV storage in Eagle Rock, Missouri with fully enclosed, enclosed, covered, and open-air storage options." />
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:Arial,Helvetica,sans-serif;background:#020817;color:white;overflow-x:hidden}
-    a{text-decoration:none;color:inherit}
-
-    :root{
-      --red:#c91f2f;
-      --red2:#8e101d;
-      --navy:#061733;
-      --blue:#0b2d66;
-      --gold:#f4c76c;
-      --white:#fff;
-      --muted:#c8d5e8;
-    }
-
-    .nav{
-      position:fixed;top:0;left:0;width:100%;z-index:50;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:16px 5vw;
-      background:rgba(2,8,23,.86);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(255,255,255,.12)
-    }
-
-    .nav img{width:118px;filter:drop-shadow(0 0 20px rgba(255,255,255,.22))}
-    .nav-links{display:flex;gap:32px;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
-    .nav-cta{background:var(--red);padding:14px 22px;border-radius:4px;font-weight:900;text-transform:uppercase;box-shadow:0 0 35px rgba(201,31,47,.55)}
-
-    .hero{
-      min-height:100vh;position:relative;display:flex;align-items:center;
-      padding:150px 5vw 80px;
-      background:
-        linear-gradient(90deg,rgba(2,8,23,.96),rgba(2,8,23,.62),rgba(2,8,23,.2)),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=80") center/cover no-repeat;
-      overflow:hidden
-    }
-
-    .hero::after{
-      content:"";position:absolute;inset:0;
-      background:radial-gradient(circle at 80% 25%,rgba(255,190,80,.28),transparent 30%),
-                 linear-gradient(to top,#020817,transparent 28%);
-    }
-
-    .hero-content{position:relative;z-index:2;max-width:760px}
-    .eyebrow{color:var(--red);text-transform:uppercase;letter-spacing:.26em;font-size:.82rem;font-weight:950;margin-bottom:18px}
-    h1{font-size:clamp(3.6rem,7vw,7.6rem);line-height:.86;text-transform:uppercase;letter-spacing:-.075em}
-    .hero-copy{font-size:1.25rem;line-height:1.7;color:#eef4ff;margin:26px 0 30px;max-width:650px}
-    .buttons{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
-    .btn{padding:16px 24px;border-radius:4px;font-weight:950;text-transform:uppercase;letter-spacing:.07em;transition:.25s}
-    .btn-red{background:var(--red);box-shadow:0 0 35px rgba(201,31,47,.55)}
-    .btn-dark{border:1px solid rgba(255,255,255,.45);background:rgba(0,0,0,.35)}
-    .btn:hover{transform:translateY(-4px)}
-
-    .tour-btn{margin-top:28px;display:inline-flex;gap:14px;align-items:center;font-weight:900;text-transform:uppercase}
-    .play{width:56px;height:56px;border:2px solid white;border-radius:50%;display:grid;place-items:center}
-
-    .promo{
-      background:
-        linear-gradient(90deg,rgba(2,8,23,.9),rgba(2,8,23,.55)),
-        url("https://images.unsplash.com/photo-1484100356142-db6ab6244067?auto=format&fit=crop&w=1800&q=80") center/cover;
-      padding:34px 5vw;text-align:center;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15)
-    }
-    .promo h2{font-size:clamp(2.2rem,4vw,4.5rem);text-transform:uppercase;letter-spacing:-.05em}
-    .promo p{color:#f4d5d5;margin-top:8px}
-
-    .features{
-      display:grid;grid-template-columns:repeat(4,1fr);
-      background:#031125;border-bottom:1px solid rgba(255,255,255,.12)
-    }
-    .feature{padding:34px;text-align:center;border-right:1px solid rgba(255,255,255,.16)}
-    .feature .icon{font-size:2.4rem;margin-bottom:14px}
-    .feature h3{text-transform:uppercase;margin-bottom:10px}
-    .feature p{color:var(--muted);line-height:1.5}
-
-    section{padding:90px 5vw}
-    .section-head{text-align:center;max-width:900px;margin:0 auto 40px}
-    .section-head h2{font-size:clamp(2.4rem,4.5vw,4.7rem);line-height:.95;text-transform:uppercase;letter-spacing:-.06em}
-    .section-head p{color:var(--muted);line-height:1.7;margin-top:16px}
-
-    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-    .card{
-      background:#061733;border:1px solid rgba(255,255,255,.15);border-radius:8px;overflow:hidden;
-      box-shadow:0 30px 80px rgba(0,0,0,.45);transition:.3s
-    }
-    .card:hover{transform:translateY(-12px)}
-    .card-img{height:220px;background:center/cover no-repeat}
-    .card-body{padding:24px;text-align:center}
-    .card h3{text-transform:uppercase;font-size:1.45rem;margin-bottom:12px}
-    .card p{color:var(--muted);line-height:1.55;margin-bottom:18px}
-    .card a{color:var(--red);font-weight:950;text-transform:uppercase;letter-spacing:.08em}
-
-    .stats{
-      margin-top:34px;border:1px solid rgba(255,255,255,.18);
-      display:grid;grid-template-columns:repeat(6,1fr);background:rgba(255,255,255,.04)
-    }
-    .stat{text-align:center;padding:28px 14px;border-right:1px solid rgba(255,255,255,.12)}
-    .stat strong{display:block;color:var(--red);font-size:2.5rem}
-    .stat span{text-transform:uppercase;font-size:.8rem;font-weight:900}
-
-    .bottom-cta{
-      display:grid;grid-template-columns:1fr 1.2fr;align-items:center;padding:0;background:#020817
-    }
-    .cta-photo{
-      min-height:390px;background:
-      linear-gradient(90deg,transparent,#020817),
-      url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat
-    }
-    .cta-copy{padding:60px 5vw}
-    .cta-copy h2{font-size:clamp(2.4rem,4vw,4.6rem);line-height:.95;text-transform:uppercase;letter-spacing:-.06em}
-    .cta-copy p{color:var(--muted);line-height:1.7;margin:18px 0 26px}
-
-    footer{padding:32px 5vw;background:#01040d;color:#8ea1bd;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
-
-    .reveal{opacity:0;transform:translateY(35px);transition:1s}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-
-    @media(max-width:1000px){
-      .nav-links{display:none}
-      .features,.cards{grid-template-columns:1fr 1fr}
-      .stats{grid-template-columns:repeat(3,1fr)}
-      .bottom-cta{grid-template-columns:1fr}
-    }
-    @media(max-width:650px){
-      .nav img{width:76px}.nav-cta{font-size:.72rem;padding:11px 14px}
-      .hero{padding:130px 5vw 70px}
-      h1{font-size:3.35rem}
-      .hero-copy{font-size:1.05rem}
-      .features,.cards,.stats{grid-template-columns:1fr}
-      .feature,.stat{border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-  <header class="nav">
-    <img src="assets/images/ersofmo-logo.jpg" alt="Eagle Rock Boat and RV Storage Complex">
+  <div class="preloader">
+    <img src="assets/images/ersofmo-logo.jpg" alt="Eagle Rock Storage Logo">
+  </div>
+
+  <header class="site-header">
+    <a href="#" class="brand">
+      <img src="assets/images/ersofmo-logo.jpg" alt="Eagle Rock Boat and RV Storage Complex">
+    </a>
+
     <nav class="nav-links">
       <a href="#overview">Overview</a>
       <a href="storage-units/">Storage Options</a>
-      <a href="faq/">Features</a>
+      <a href="pricing/">Pricing</a>
       <a href="location/">Location</a>
-      <a href="contact/">About</a>
+      <a href="contact/">Contact</a>
     </nav>
-    <a class="nav-cta" href="contact/">Check Availability</a>
+
+    <a href="contact/" class="header-cta">Check Availability</a>
   </header>
 
   <main>
     <section class="hero">
+      <div class="hero-video-layer">
+        <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=80">
+          <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-lake-8958/1080p.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="hero-overlay"></div>
+      <div class="hero-logo-watermark"></div>
+      <div class="light-orb orb-red"></div>
+      <div class="light-orb orb-blue"></div>
+
       <div class="hero-content reveal">
         <p class="eyebrow">Eagle Rock, Missouri</p>
+
         <h1>Premium Boat & RV Storage Near The Water.</h1>
+
         <p class="hero-copy">
-          Secure. Spacious. Built for lake life. Fully enclosed, enclosed, covered,
-          and open-air storage options for boats, RVs, trailers, campers, and more.
+          Secure, spacious, and built for lake life — with fully enclosed,
+          enclosed, covered, and open-air storage options for boats, RVs,
+          campers, trailers, and extra vehicles.
         </p>
-        <div class="buttons">
-          <a class="btn btn-red" href="storage-units/">View Storage Options</a>
-          <a class="btn btn-dark" href="contact/">Check Availability</a>
+
+        <div class="hero-actions">
+          <a href="storage-units/" class="btn btn-red">View Storage Options</a>
+          <a href="contact/" class="btn btn-glass">Check Availability</a>
         </div>
-        <a class="tour-btn" href="#overview"><span class="play">▶</span> Watch Aerial Tour</a>
+
+        <a href="#overview" class="video-tour">
+          <span>▶</span>
+          Watch Aerial Tour
+        </a>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div><strong>202</strong><span>Total Spaces</span></div>
+        <div><strong>24/7</strong><span>Tenant Access</span></div>
+        <div><strong>$30</strong><span>Move-In Special</span></div>
       </div>
     </section>
 
-    <div class="promo">
-      <p class="eyebrow">★★★</p>
+    <section class="promo-banner">
+      <div class="stars">★★★</div>
       <h2>$30 Move-In Special</h2>
       <p>Only for open-air parking secured with a 6-month contract.</p>
-    </div>
+    </section>
 
-    <div class="features">
-      <div class="feature reveal"><div class="icon">🛡️</div><h3>24/7 Access</h3><p>Access your property anytime, day or night.</p></div>
-      <div class="feature reveal"><div class="icon">🔒</div><h3>Secure Facility</h3><p>Designed with secure access and tenant peace of mind.</p></div>
-      <div class="feature reveal"><div class="icon">📷</div><h3>Monitored Premises</h3><p>Security-focused storage for boats and RVs.</p></div>
-      <div class="feature reveal"><div class="icon">★</div><h3>Made For You</h3><p>Built specifically for boat, RV, camper, and trailer owners.</p></div>
-    </div>
+    <section class="feature-strip">
+      <div class="feature reveal">
+        <span>🛡️</span>
+        <h3>24/7 Access</h3>
+        <p>Access your property any time, day or night.</p>
+      </div>
 
-    <section id="overview">
-      <div class="section-head reveal">
+      <div class="feature reveal">
+        <span>🔒</span>
+        <h3>Secure Facility</h3>
+        <p>Designed for peace of mind and easy tenant access.</p>
+      </div>
+
+      <div class="feature reveal">
+        <span>📷</span>
+        <h3>Storage Focused</h3>
+        <p>Built around boats, RVs, campers, and trailers.</p>
+      </div>
+
+      <div class="feature reveal">
+        <span>★</span>
+        <h3>Made For Lake Life</h3>
+        <p>Convenient storage near Eagle Rock and the water.</p>
+      </div>
+    </section>
+
+    <section id="overview" class="storage-section">
+      <div class="section-heading reveal">
         <p class="eyebrow">Storage Options</p>
         <h2>The right space for what you drive, tow, or store.</h2>
       </div>
 
-      <div class="cards">
-        <article class="card reveal">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80')"></div>
-          <div class="card-body">
+      <div class="storage-grid">
+        <article class="storage-card reveal">
+          <div class="card-image image-fully"></div>
+          <div class="card-content">
             <h3>Fully Enclosed</h3>
             <p>Maximum protection for boats, RVs, trailers, and valuable vehicles.</p>
             <a href="storage-units/">Learn More →</a>
           </div>
         </article>
 
-        <article class="card reveal">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80')"></div>
-          <div class="card-body">
+        <article class="storage-card reveal">
+          <div class="card-image image-enclosed"></div>
+          <div class="card-content">
             <h3>Enclosed</h3>
-            <p>Covered and enclosed storage at a great value.</p>
+            <p>Protected storage with large doors and practical monthly pricing.</p>
             <a href="storage-units/">Learn More →</a>
           </div>
         </article>
 
-        <article class="card reveal">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80')"></div>
-          <div class="card-body">
+        <article class="storage-card reveal">
+          <div class="card-image image-covered"></div>
+          <div class="card-content">
             <h3>Covered</h3>
-            <p>Overhead protection for boats, RVs, trailers, and more.</p>
+            <p>Overhead protection for boats, RVs, campers, and trailers.</p>
             <a href="storage-units/">Learn More →</a>
           </div>
         </article>
 
-        <article class="card reveal">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1523986371872-9d3ba2e2a389?auto=format&fit=crop&w=900&q=80')"></div>
-          <div class="card-body">
+        <article class="storage-card reveal">
+          <div class="card-image image-open"></div>
+          <div class="card-content">
             <h3>Open-Air</h3>
-            <p>Affordable outdoor parking with multiple size options.</p>
-            <a href="pricing/">Learn More →</a>
+            <p>Affordable outdoor parking with multiple space sizes available.</p>
+            <a href="pricing/">View Pricing →</a>
           </div>
         </article>
       </div>
 
-      <div class="stats reveal">
-        <div class="stat"><strong>202</strong><span>Total Spaces</span></div>
-        <div class="stat"><strong>16</strong><span>Fully Enclosed</span></div>
-        <div class="stat"><strong>16</strong><span>Enclosed</span></div>
-        <div class="stat"><strong>20</strong><span>Covered</span></div>
-        <div class="stat"><strong>150</strong><span>Open-Air</span></div>
-        <div class="stat"><strong>24/7</strong><span>Access</span></div>
+      <div class="number-bar reveal">
+        <div><strong>202</strong><span>Total Spaces</span></div>
+        <div><strong>16</strong><span>Fully Enclosed</span></div>
+        <div><strong>16</strong><span>Enclosed</span></div>
+        <div><strong>20</strong><span>Covered</span></div>
+        <div><strong>150</strong><span>Open-Air</span></div>
+        <div><strong>24/7</strong><span>Access</span></div>
       </div>
     </section>
 
-    <section class="bottom-cta">
-      <div class="cta-photo"></div>
-      <div class="cta-copy reveal">
+    <section class="cinematic-story">
+      <div class="story-image reveal"></div>
+
+      <div class="story-copy reveal">
+        <p class="eyebrow">Simple. Secure. Local.</p>
+        <h2>Built for people who need more than a parking spot.</h2>
+        <p>
+          From weekend lake trips to long-term storage, Eagle Rock Boat and RV
+          Storage Complex gives tenants flexible storage options with easy access,
+          clear direction, and room for the vehicles that make lake life possible.
+        </p>
+
+        <div class="story-actions">
+          <a href="pricing/" class="btn btn-red">View Pricing</a>
+          <a href="location/" class="btn btn-glass">View Location</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="final-glow"></div>
+      <div class="reveal">
         <p class="eyebrow">Ready When You Are</p>
-        <h2>Reserve your space today.</h2>
-        <p>Contact us for availability, pricing, and details about the current move-in special.</p>
-        <a class="btn btn-red" href="contact/">Check Availability</a>
+        <h2>Reserve your space before the best spots are gone.</h2>
+        <p>Contact Eagle Rock Boat and RV Storage Complex for current availability and move-in details.</p>
+        <a href="contact/" class="btn btn-red">Check Availability</a>
       </div>
     </section>
   </main>
@@ -253,14 +195,6 @@
     <p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
   </footer>
 
-  <script>
-    const reveals=document.querySelectorAll('.reveal');
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    },{threshold:.15});
-    reveals.forEach(el=>observer.observe(el));
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

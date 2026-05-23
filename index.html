@@ -6,645 +6,243 @@
   <title>Eagle Rock Boat & RV Storage Complex</title>
 
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background:#020817;
-      color:white;
-      overflow-x:hidden;
-    }
-    a { color:inherit; text-decoration:none; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:#020817;color:white;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
 
-    :root {
-      --navy:#061733;
-      --blue:#123d85;
+    :root{
       --red:#c91f2f;
-      --gold:#f5c76b;
-      --ice:#dbeafe;
+      --red2:#8e101d;
+      --navy:#061733;
+      --blue:#0b2d66;
+      --gold:#f4c76c;
+      --white:#fff;
+      --muted:#c8d5e8;
     }
 
-    .nav {
-      position:fixed;
-      top:0; left:0;
-      width:100%;
-      z-index:999;
-      padding:18px 6vw;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:linear-gradient(to bottom, rgba(2,8,23,.95), rgba(2,8,23,.35));
-      backdrop-filter:blur(16px);
-    }
-
-    .nav img {
-      width:72px;
-      filter:drop-shadow(0 0 25px rgba(255,255,255,.35));
-    }
-
-    .nav-links {
-      display:flex;
-      gap:28px;
-      text-transform:uppercase;
-      font-size:.78rem;
-      font-weight:900;
-      letter-spacing:.1em;
-    }
-
-    .nav-cta {
-      background:var(--red);
-      padding:12px 18px;
-      border-radius:999px;
-      font-weight:900;
-      box-shadow:0 0 40px rgba(201,31,47,.5);
-    }
-
-    .hero {
-      min-height:100vh;
-      position:relative;
-      display:flex;
-      align-items:center;
-      padding:135px 6vw 80px;
-      overflow:hidden;
-      background:
-        linear-gradient(90deg, rgba(2,8,23,.95), rgba(2,8,23,.65), rgba(2,8,23,.98)),
-        radial-gradient(circle at 75% 35%, rgba(201,31,47,.45), transparent 34%),
-        radial-gradient(circle at 18% 18%, rgba(37,99,235,.55), transparent 35%),
-        linear-gradient(135deg, #020817, #08245a 52%, #020817);
-    }
-
-    .hero::before {
-      content:"";
-      position:absolute;
-      inset:-15%;
-      background:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:70px 70px;
-      transform:perspective(800px) rotateX(58deg) translateY(80px);
-      animation:gridMove 14s linear infinite;
-      opacity:.45;
-    }
-
-    .hero::after {
-      content:"";
-      position:absolute;
-      right:-12vw;
-      top:13vh;
-      width:55vw;
-      height:55vw;
-      background:url("assets/images/ersofmo-logo.jpg") center/contain no-repeat;
-      opacity:.13;
-      filter:drop-shadow(0 0 80px rgba(255,255,255,.45));
-      animation:slowFloat 8s ease-in-out infinite;
-    }
-
-    @keyframes gridMove {
-      from { background-position:0 0; }
-      to { background-position:0 140px; }
-    }
-
-    @keyframes slowFloat {
-      0%,100% { transform:translateY(0) scale(1); }
-      50% { transform:translateY(-24px) scale(1.04); }
-    }
-
-    .hero-content {
-      position:relative;
-      z-index:2;
-      max-width:900px;
-    }
-
-    .hero-logo {
-      width:190px;
-      margin-bottom:28px;
-      border-radius:50%;
-      background:white;
-      padding:6px;
-      box-shadow:0 35px 100px rgba(0,0,0,.7);
-      animation:logoFloat 5s ease-in-out infinite;
-    }
-
-    @keyframes logoFloat {
-      0%,100% { transform:translateY(0); }
-      50% { transform:translateY(-10px); }
-    }
-
-    .eyebrow {
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:.24em;
-      font-size:.82rem;
-      font-weight:950;
-      margin-bottom:18px;
-    }
-
-    h1 {
-      font-size:clamp(3.5rem, 8vw, 8rem);
-      line-height:.86;
-      letter-spacing:-.075em;
-      text-transform:uppercase;
-      max-width:1000px;
-    }
-
-    .hero-copy {
-      max-width:690px;
-      color:#dbeafe;
-      font-size:1.25rem;
-      line-height:1.7;
-      margin:32px 0;
-    }
-
-    .buttons {
-      display:flex;
-      flex-wrap:wrap;
-      gap:16px;
-    }
-
-    .btn {
-      padding:17px 26px;
-      border-radius:999px;
-      font-weight:950;
-      text-transform:uppercase;
-      letter-spacing:.07em;
-      transition:.25s ease;
-    }
-
-    .btn-primary {
-      background:var(--red);
-      box-shadow:0 0 45px rgba(201,31,47,.6);
-    }
-
-    .btn-primary:hover {
-      transform:translateY(-5px);
-      box-shadow:0 0 70px rgba(201,31,47,.85);
-    }
-
-    .btn-glass {
-      background:rgba(255,255,255,.09);
-      border:1px solid rgba(255,255,255,.25);
-      backdrop-filter:blur(14px);
-    }
-
-    .btn-glass:hover {
-      background:white;
-      color:#061733;
-      transform:translateY(-5px);
-    }
-
-    .hero-stats {
-      margin-top:44px;
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:14px;
-      max-width:700px;
-    }
-
-    .stat {
-      padding:24px;
-      border-radius:24px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
+    .nav{
+      position:fixed;top:0;left:0;width:100%;z-index:50;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 5vw;
+      background:rgba(2,8,23,.86);
       backdrop-filter:blur(18px);
-      box-shadow:0 25px 70px rgba(0,0,0,.35);
+      border-bottom:1px solid rgba(255,255,255,.12)
     }
 
-    .stat strong {
-      display:block;
-      font-size:2.3rem;
-    }
+    .nav img{width:118px;filter:drop-shadow(0 0 20px rgba(255,255,255,.22))}
+    .nav-links{display:flex;gap:32px;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+    .nav-cta{background:var(--red);padding:14px 22px;border-radius:4px;font-weight:900;text-transform:uppercase;box-shadow:0 0 35px rgba(201,31,47,.55)}
 
-    .stat span {
-      color:#adc1dd;
-      font-weight:800;
-    }
-
-    .promo {
-      padding:22px 6vw;
-      background:linear-gradient(90deg, var(--red), #7f1020, var(--blue));
-      text-align:center;
-      text-transform:uppercase;
-      font-weight:950;
-      letter-spacing:.08em;
-      box-shadow:0 20px 70px rgba(201,31,47,.28);
-    }
-
-    .cinematic-strip {
-      padding:100px 6vw;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:26px;
+    .hero{
+      min-height:100vh;position:relative;display:flex;align-items:center;
+      padding:150px 5vw 80px;
       background:
-        radial-gradient(circle at 80% 30%, rgba(201,31,47,.22), transparent 30%),
-        #020817;
+        linear-gradient(90deg,rgba(2,8,23,.96),rgba(2,8,23,.62),rgba(2,8,23,.2)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=80") center/cover no-repeat;
+      overflow:hidden
     }
 
-    .visual-card {
-      min-height:520px;
-      border-radius:38px;
-      overflow:hidden;
-      position:relative;
+    .hero::after{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(circle at 80% 25%,rgba(255,190,80,.28),transparent 30%),
+                 linear-gradient(to top,#020817,transparent 28%);
+    }
+
+    .hero-content{position:relative;z-index:2;max-width:760px}
+    .eyebrow{color:var(--red);text-transform:uppercase;letter-spacing:.26em;font-size:.82rem;font-weight:950;margin-bottom:18px}
+    h1{font-size:clamp(3.6rem,7vw,7.6rem);line-height:.86;text-transform:uppercase;letter-spacing:-.075em}
+    .hero-copy{font-size:1.25rem;line-height:1.7;color:#eef4ff;margin:26px 0 30px;max-width:650px}
+    .buttons{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+    .btn{padding:16px 24px;border-radius:4px;font-weight:950;text-transform:uppercase;letter-spacing:.07em;transition:.25s}
+    .btn-red{background:var(--red);box-shadow:0 0 35px rgba(201,31,47,.55)}
+    .btn-dark{border:1px solid rgba(255,255,255,.45);background:rgba(0,0,0,.35)}
+    .btn:hover{transform:translateY(-4px)}
+
+    .tour-btn{margin-top:28px;display:inline-flex;gap:14px;align-items:center;font-weight:900;text-transform:uppercase}
+    .play{width:56px;height:56px;border:2px solid white;border-radius:50%;display:grid;place-items:center}
+
+    .promo{
       background:
-        linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.03)),
-        radial-gradient(circle at 65% 25%, rgba(245,199,107,.28), transparent 34%),
-        linear-gradient(135deg, #061733, #020817);
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow:0 40px 110px rgba(0,0,0,.45);
+        linear-gradient(90deg,rgba(2,8,23,.9),rgba(2,8,23,.55)),
+        url("https://images.unsplash.com/photo-1484100356142-db6ab6244067?auto=format&fit=crop&w=1800&q=80") center/cover;
+      padding:34px 5vw;text-align:center;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15)
     }
+    .promo h2{font-size:clamp(2.2rem,4vw,4.5rem);text-transform:uppercase;letter-spacing:-.05em}
+    .promo p{color:#f4d5d5;margin-top:8px}
 
-    .visual-card::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        url("assets/images/ersofmo-logo.jpg") center/55% no-repeat;
-      opacity:.16;
-      filter:drop-shadow(0 0 60px rgba(255,255,255,.5));
+    .features{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      background:#031125;border-bottom:1px solid rgba(255,255,255,.12)
     }
+    .feature{padding:34px;text-align:center;border-right:1px solid rgba(255,255,255,.16)}
+    .feature .icon{font-size:2.4rem;margin-bottom:14px}
+    .feature h3{text-transform:uppercase;margin-bottom:10px}
+    .feature p{color:var(--muted);line-height:1.5}
 
-    .visual-card::after {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(to top, rgba(2,8,23,.92), transparent 55%),
-        linear-gradient(120deg, rgba(201,31,47,.25), transparent 45%);
+    section{padding:90px 5vw}
+    .section-head{text-align:center;max-width:900px;margin:0 auto 40px}
+    .section-head h2{font-size:clamp(2.4rem,4.5vw,4.7rem);line-height:.95;text-transform:uppercase;letter-spacing:-.06em}
+    .section-head p{color:var(--muted);line-height:1.7;margin-top:16px}
+
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .card{
+      background:#061733;border:1px solid rgba(255,255,255,.15);border-radius:8px;overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.45);transition:.3s
     }
+    .card:hover{transform:translateY(-12px)}
+    .card-img{height:220px;background:center/cover no-repeat}
+    .card-body{padding:24px;text-align:center}
+    .card h3{text-transform:uppercase;font-size:1.45rem;margin-bottom:12px}
+    .card p{color:var(--muted);line-height:1.55;margin-bottom:18px}
+    .card a{color:var(--red);font-weight:950;text-transform:uppercase;letter-spacing:.08em}
 
-    .visual-card-content {
-      position:absolute;
-      left:34px;
-      right:34px;
-      bottom:34px;
-      z-index:2;
+    .stats{
+      margin-top:34px;border:1px solid rgba(255,255,255,.18);
+      display:grid;grid-template-columns:repeat(6,1fr);background:rgba(255,255,255,.04)
     }
+    .stat{text-align:center;padding:28px 14px;border-right:1px solid rgba(255,255,255,.12)}
+    .stat strong{display:block;color:var(--red);font-size:2.5rem}
+    .stat span{text-transform:uppercase;font-size:.8rem;font-weight:900}
 
-    .visual-card-content h2 {
-      font-size:clamp(2.2rem, 4vw, 4.6rem);
-      line-height:.95;
-      letter-spacing:-.06em;
-      text-transform:uppercase;
+    .bottom-cta{
+      display:grid;grid-template-columns:1fr 1.2fr;align-items:center;padding:0;background:#020817
     }
-
-    .mini-grid {
-      display:grid;
-      grid-template-columns:1fr;
-      gap:26px;
+    .cta-photo{
+      min-height:390px;background:
+      linear-gradient(90deg,transparent,#020817),
+      url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat
     }
+    .cta-copy{padding:60px 5vw}
+    .cta-copy h2{font-size:clamp(2.4rem,4vw,4.6rem);line-height:.95;text-transform:uppercase;letter-spacing:-.06em}
+    .cta-copy p{color:var(--muted);line-height:1.7;margin:18px 0 26px}
 
-    .mini-card {
-      min-height:247px;
-      border-radius:34px;
-      padding:30px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.04)),
-        radial-gradient(circle at top right, rgba(37,99,235,.4), transparent 35%);
-      border:1px solid rgba(255,255,255,.13);
-      box-shadow:0 30px 90px rgba(0,0,0,.35);
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      transition:.3s ease;
+    footer{padding:32px 5vw;background:#01040d;color:#8ea1bd;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+
+    .reveal{opacity:0;transform:translateY(35px);transition:1s}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:1000px){
+      .nav-links{display:none}
+      .features,.cards{grid-template-columns:1fr 1fr}
+      .stats{grid-template-columns:repeat(3,1fr)}
+      .bottom-cta{grid-template-columns:1fr}
     }
-
-    .mini-card:hover {
-      transform:translateY(-10px) scale(1.02);
-      border-color:rgba(245,199,107,.6);
-    }
-
-    .mini-card h3 {
-      font-size:2rem;
-      margin-bottom:10px;
-    }
-
-    .mini-card p {
-      color:#c7d7ee;
-      line-height:1.6;
-    }
-
-    .section {
-      padding:110px 6vw;
-    }
-
-    .section-head {
-      max-width:900px;
-      margin-bottom:48px;
-    }
-
-    .section-head h2 {
-      font-size:clamp(2.6rem, 5vw, 5.3rem);
-      line-height:.92;
-      letter-spacing:-.065em;
-      text-transform:uppercase;
-    }
-
-    .section-head p {
-      color:#c7d7ee;
-      font-size:1.15rem;
-      line-height:1.7;
-      margin-top:20px;
-    }
-
-    .category-grid {
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:20px;
-    }
-
-    .category-card {
-      min-height:360px;
-      padding:30px;
-      border-radius:34px;
-      position:relative;
-      overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.035)),
-        #061733;
-      border:1px solid rgba(255,255,255,.13);
-      box-shadow:0 30px 90px rgba(0,0,0,.35);
-      transition:.3s ease;
-    }
-
-    .category-card:hover {
-      transform:translateY(-14px);
-      box-shadow:0 45px 120px rgba(0,0,0,.55);
-    }
-
-    .category-card::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle at top, rgba(245,199,107,.28), transparent 38%);
-      opacity:.7;
-    }
-
-    .category-card h3,
-    .category-card p,
-    .category-card a {
-      position:relative;
-      z-index:2;
-    }
-
-    .category-card h3 {
-      font-size:2rem;
-      margin-bottom:16px;
-    }
-
-    .category-card p {
-      color:#c7d7ee;
-      line-height:1.6;
-      margin-bottom:24px;
-    }
-
-    .category-card a {
-      color:var(--gold);
-      font-weight:950;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .story {
-      background:
-        linear-gradient(rgba(2,8,23,.82), rgba(2,8,23,.9)),
-        radial-gradient(circle at 30% 20%, rgba(201,31,47,.28), transparent 32%),
-        radial-gradient(circle at 75% 60%, rgba(37,99,235,.28), transparent 38%);
-    }
-
-    .story-inner {
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:42px;
-      align-items:center;
-    }
-
-    .badge-wall {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-    }
-
-    .badge {
-      padding:28px;
-      border-radius:28px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      text-align:center;
-    }
-
-    .badge strong {
-      display:block;
-      font-size:2.4rem;
-      color:var(--gold);
-      margin-bottom:6px;
-    }
-
-    .final-cta {
-      min-height:75vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      background:
-        radial-gradient(circle at center, rgba(201,31,47,.38), transparent 28%),
-        linear-gradient(180deg, #020817, #061733);
-    }
-
-    .final-cta div {
-      max-width:850px;
-    }
-
-    .final-cta h2 {
-      font-size:clamp(2.8rem, 6vw, 6rem);
-      line-height:.9;
-      letter-spacing:-.065em;
-      text-transform:uppercase;
-      margin-bottom:26px;
-    }
-
-    footer {
-      background:#01040d;
-      padding:38px 6vw;
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      flex-wrap:wrap;
-      color:#9fb0c8;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-
-    .reveal {
-      opacity:0;
-      transform:translateY(38px);
-      transition:1s ease;
-    }
-
-    .reveal.visible {
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    @media (max-width:1000px) {
-      .nav-links { display:none; }
-      .cinematic-strip,
-      .story-inner { grid-template-columns:1fr; }
-      .category-grid { grid-template-columns:1fr 1fr; }
-    }
-
-    @media (max-width:650px) {
-      .nav { padding:14px 5vw; }
-      .nav img { width:56px; }
-      .nav-cta { font-size:.75rem; padding:10px 13px; }
-      .hero { padding:120px 5vw 70px; }
-      .hero-logo { width:145px; }
-      .hero-stats,
-      .category-grid,
-      .badge-wall { grid-template-columns:1fr; }
-      .section, .cinematic-strip { padding:78px 5vw; }
-      h1 { font-size:3.35rem; }
-      .hero-copy { font-size:1.05rem; }
-      footer { flex-direction:column; }
+    @media(max-width:650px){
+      .nav img{width:76px}.nav-cta{font-size:.72rem;padding:11px 14px}
+      .hero{padding:130px 5vw 70px}
+      h1{font-size:3.35rem}
+      .hero-copy{font-size:1.05rem}
+      .features,.cards,.stats{grid-template-columns:1fr}
+      .feature,.stat{border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}
     }
   </style>
 </head>
 
 <body>
   <header class="nav">
-    <a href="#top">
-      <img src="assets/images/ersofmo-logo.jpg" alt="Eagle Rock Boat and RV Storage Complex">
-    </a>
-
+    <img src="assets/images/ersofmo-logo.jpg" alt="Eagle Rock Boat and RV Storage Complex">
     <nav class="nav-links">
       <a href="#overview">Overview</a>
-      <a href="pricing/">Pricing</a>
-      <a href="storage-units/">Units</a>
+      <a href="storage-units/">Storage Options</a>
+      <a href="faq/">Features</a>
       <a href="location/">Location</a>
-      <a href="contact/">Contact</a>
+      <a href="contact/">About</a>
     </nav>
-
-    <a href="contact/" class="nav-cta">Check Availability</a>
+    <a class="nav-cta" href="contact/">Check Availability</a>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
       <div class="hero-content reveal">
-        <img class="hero-logo" src="assets/images/ersofmo-logo.jpg" alt="Eagle Rock Boat and RV Storage Complex">
-
         <p class="eyebrow">Eagle Rock, Missouri</p>
-
-        <h1>Premium Boat & RV Storage Near the Water.</h1>
-
+        <h1>Premium Boat & RV Storage Near The Water.</h1>
         <p class="hero-copy">
-          A secure, spacious storage complex built for lake life — with fully enclosed,
-          enclosed, covered, and open-air options for boats, RVs, campers, trailers,
-          and extra vehicles.
+          Secure. Spacious. Built for lake life. Fully enclosed, enclosed, covered,
+          and open-air storage options for boats, RVs, trailers, campers, and more.
         </p>
-
         <div class="buttons">
-          <a href="storage-units/" class="btn btn-primary">Explore Storage Options</a>
-          <a href="contact/" class="btn btn-glass">Check Availability</a>
+          <a class="btn btn-red" href="storage-units/">View Storage Options</a>
+          <a class="btn btn-dark" href="contact/">Check Availability</a>
         </div>
-
-        <div class="hero-stats">
-          <div class="stat"><strong>202</strong><span>Total Spaces</span></div>
-          <div class="stat"><strong>24/7</strong><span>Tenant Access</span></div>
-          <div class="stat"><strong>$30</strong><span>Move-In Special</span></div>
-        </div>
+        <a class="tour-btn" href="#overview"><span class="play">▶</span> Watch Aerial Tour</a>
       </div>
     </section>
 
     <div class="promo">
-      $30 Move-In Special · Open-air parking with a 6-month contract
+      <p class="eyebrow">★★★</p>
+      <h2>$30 Move-In Special</h2>
+      <p>Only for open-air parking secured with a 6-month contract.</p>
     </div>
 
-    <section class="cinematic-strip" id="overview">
-      <div class="visual-card reveal">
-        <div class="visual-card-content">
-          <p class="eyebrow">Built For Lake Life</p>
-          <h2>Storage with presence, protection, and space.</h2>
-        </div>
-      </div>
+    <div class="features">
+      <div class="feature reveal"><div class="icon">🛡️</div><h3>24/7 Access</h3><p>Access your property anytime, day or night.</p></div>
+      <div class="feature reveal"><div class="icon">🔒</div><h3>Secure Facility</h3><p>Designed with secure access and tenant peace of mind.</p></div>
+      <div class="feature reveal"><div class="icon">📷</div><h3>Monitored Premises</h3><p>Security-focused storage for boats and RVs.</p></div>
+      <div class="feature reveal"><div class="icon">★</div><h3>Made For You</h3><p>Built specifically for boat, RV, camper, and trailer owners.</p></div>
+    </div>
 
-      <div class="mini-grid">
-        <div class="mini-card reveal">
-          <h3>Boat Storage</h3>
-          <p>Storage options sized for boats, trailers, and lake-season convenience.</p>
-        </div>
-
-        <div class="mini-card reveal">
-          <h3>RV Storage</h3>
-          <p>Large spaces for motorhomes, campers, travel trailers, and recreational vehicles.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <section id="overview">
       <div class="section-head reveal">
         <p class="eyebrow">Storage Options</p>
-        <h2>Choose the right level of protection.</h2>
-        <p>
-          Eagle Rock Boat and RV Storage Complex offers multiple storage types
-          designed for different vehicles, budgets, and protection needs.
-        </p>
+        <h2>The right space for what you drive, tow, or store.</h2>
       </div>
 
-      <div class="category-grid">
-        <article class="category-card reveal">
-          <h3>Fully Enclosed</h3>
-          <p>Maximum coverage for boats, RVs, trailers, and higher-value storage needs.</p>
-          <a href="storage-units/">View Units</a>
-        </article>
-
-        <article class="category-card reveal">
-          <h3>Enclosed</h3>
-          <p>Protected storage with large doors and practical monthly pricing.</p>
-          <a href="storage-units/">View Units</a>
-        </article>
-
-        <article class="category-card reveal">
-          <h3>Covered</h3>
-          <p>Overhead protection for boats, RVs, trailers, and seasonal storage.</p>
-          <a href="storage-units/">View Units</a>
-        </article>
-
-        <article class="category-card reveal">
-          <h3>Open-Air</h3>
-          <p>Affordable parking for larger vehicles, trailers, boats, and RVs.</p>
-          <a href="pricing/">View Pricing</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section story">
-      <div class="story-inner">
-        <div class="badge-wall reveal">
-          <div class="badge"><strong>16</strong><span>Fully Enclosed Units</span></div>
-          <div class="badge"><strong>16</strong><span>Enclosed Units</span></div>
-          <div class="badge"><strong>20</strong><span>Covered Units</span></div>
-          <div class="badge"><strong>150</strong><span>Open-Air Spaces</span></div>
-        </div>
-
-        <div class="section-head reveal">
-          <p class="eyebrow">Simple. Secure. Local.</p>
-          <h2>Designed for people who need more than a parking spot.</h2>
-          <p>
-            From weekend lake trips to long-term vehicle storage, the complex is
-            built around convenience, room to maneuver, and easy access whenever
-            tenants need their equipment.
-          </p>
-
-          <div class="buttons">
-            <a href="pricing/" class="btn btn-primary">View Pricing</a>
-            <a href="location/" class="btn btn-glass">View Location</a>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Fully Enclosed</h3>
+            <p>Maximum protection for boats, RVs, trailers, and valuable vehicles.</p>
+            <a href="storage-units/">Learn More →</a>
           </div>
-        </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Enclosed</h3>
+            <p>Covered and enclosed storage at a great value.</p>
+            <a href="storage-units/">Learn More →</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Covered</h3>
+            <p>Overhead protection for boats, RVs, trailers, and more.</p>
+            <a href="storage-units/">Learn More →</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1523986371872-9d3ba2e2a389?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Open-Air</h3>
+            <p>Affordable outdoor parking with multiple size options.</p>
+            <a href="pricing/">Learn More →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat"><strong>202</strong><span>Total Spaces</span></div>
+        <div class="stat"><strong>16</strong><span>Fully Enclosed</span></div>
+        <div class="stat"><strong>16</strong><span>Enclosed</span></div>
+        <div class="stat"><strong>20</strong><span>Covered</span></div>
+        <div class="stat"><strong>150</strong><span>Open-Air</span></div>
+        <div class="stat"><strong>24/7</strong><span>Access</span></div>
       </div>
     </section>
 
-    <section class="final-cta">
-      <div class="reveal">
-        <p class="eyebrow">Reserve Your Space</p>
-        <h2>Premium storage for boats, RVs, trailers, and lake life.</h2>
-        <a href="contact/" class="btn btn-primary">Check Availability</a>
+    <section class="bottom-cta">
+      <div class="cta-photo"></div>
+      <div class="cta-copy reveal">
+        <p class="eyebrow">Ready When You Are</p>
+        <h2>Reserve your space today.</h2>
+        <p>Contact us for availability, pricing, and details about the current move-in special.</p>
+        <a class="btn btn-red" href="contact/">Check Availability</a>
       </div>
     </section>
   </main>
@@ -656,15 +254,13 @@
   </footer>
 
   <script>
-    const reveals = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+    const reveals=document.querySelectorAll('.reveal');
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.15 });
-
-    reveals.forEach(el => observer.observe(el));
+    },{threshold:.15});
+    reveals.forEach(el=>observer.observe(el));
   </script>
 </body>
 </html>

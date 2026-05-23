@@ -1,2 +1,605 @@
-<h1>Pricing & Availability</h1>
-<p>Unit pricing tables, availability, promotions, and rental terms will be added here.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Pricing | Eagle Rock Boat & RV Storage Complex</title>
+  <meta name="description" content="View pricing for fully enclosed, enclosed, covered, and open-air boat and RV storage in Eagle Rock, Missouri." />
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    .pricing-hero {
+      min-height: 72vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 150px 5vw 90px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(2,8,23,.98), rgba(2,8,23,.78), rgba(2,8,23,.34)),
+        linear-gradient(to top, rgba(2,8,23,1), rgba(2,8,23,.18)),
+        url('../assets/images/trl-hero.png') center right/cover no-repeat;
+    }
+
+    .pricing-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 24%, rgba(244,199,108,.24), transparent 32%),
+        radial-gradient(circle at 20% 30%, rgba(201,31,47,.22), transparent 35%);
+      pointer-events: none;
+    }
+
+    .pricing-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 930px;
+    }
+
+    .pricing-hero h1 {
+      font-size: clamp(3.4rem, 7vw, 7rem);
+    }
+
+    .pricing-hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.18rem;
+      line-height: 1.7;
+      margin: 24px 0 32px;
+    }
+
+    .special-bar {
+      padding: 30px 5vw;
+      text-align: center;
+      background: linear-gradient(90deg, var(--red), #7f1020, var(--blue));
+      border-top: 1px solid rgba(255,255,255,.16);
+      border-bottom: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 25px 80px rgba(201,31,47,.25);
+    }
+
+    .special-bar h2 {
+      font-size: clamp(2.2rem, 4vw, 4.8rem);
+      line-height: .95;
+      text-transform: uppercase;
+      letter-spacing: -.055em;
+    }
+
+    .special-bar p {
+      color: #ffe6e8;
+      margin-top: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .9rem;
+    }
+
+    .pricing-section {
+      padding: 95px 5vw;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(201,31,47,.18), transparent 30%),
+        radial-gradient(circle at 82% 24%, rgba(37,99,235,.22), transparent 34%),
+        var(--dark);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 42px;
+    }
+
+    .price-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
+      box-shadow: 0 35px 95px rgba(0,0,0,.38);
+      padding: 30px;
+      transition: .3s ease;
+    }
+
+    .price-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(244,199,108,.6);
+    }
+
+    .price-card.featured {
+      border-color: rgba(244,199,108,.42);
+      box-shadow: 0 40px 115px rgba(244,199,108,.12);
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(244,199,108,.18), transparent 38%);
+      pointer-events: none;
+    }
+
+    .price-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .price-label {
+      display: inline-block;
+      color: #ffd7dc;
+      background: rgba(201,31,47,.24);
+      border: 1px solid rgba(201,31,47,.35);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .price-card h2 {
+      font-size: 2.05rem;
+      line-height: .95;
+      text-transform: uppercase;
+      letter-spacing: -.05em;
+      margin-bottom: 16px;
+    }
+
+    .was-now {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .was {
+      color: #8fa1ba;
+      font-size: 1.15rem;
+      font-weight: 900;
+      text-decoration: line-through;
+      margin-bottom: 7px;
+    }
+
+    .now {
+      font-size: 3rem;
+      font-weight: 950;
+      color: white;
+      line-height: .9;
+    }
+
+    .now span {
+      display: inline-block;
+      font-size: .95rem;
+      color: var(--muted);
+      font-weight: 800;
+      margin-left: 4px;
+    }
+
+    .price-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .price-list {
+      list-style: none;
+      display: grid;
+      gap: 11px;
+      margin-bottom: 26px;
+      color: #e8f1ff;
+      font-weight: 800;
+    }
+
+    .price-list li::before {
+      content: '★';
+      color: var(--gold);
+      margin-right: 9px;
+    }
+
+    .pricing-table-section {
+      padding: 95px 5vw;
+      background: #031125;
+    }
+
+    .pricing-table-wrap {
+      overflow-x: auto;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 35px 95px rgba(0,0,0,.35);
+      margin-top: 38px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 850px;
+      background: rgba(255,255,255,.04);
+    }
+
+    th, td {
+      padding: 22px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    th {
+      background: rgba(201,31,47,.22);
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .8rem;
+    }
+
+    td {
+      color: #dbe7f6;
+      font-weight: 750;
+    }
+
+    td strong {
+      color: white;
+      font-size: 1.15rem;
+    }
+
+    .terms-section {
+      padding: 95px 5vw;
+      background:
+        linear-gradient(rgba(2,8,23,.88), rgba(2,8,23,.94)),
+        url('../assets/images/trl-hero.png') center/cover no-repeat;
+    }
+
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .term-card {
+      padding: 30px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.13);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 25px 70px rgba(0,0,0,.28);
+    }
+
+    .term-card strong {
+      display: block;
+      color: var(--gold);
+      font-size: 2.1rem;
+      margin-bottom: 10px;
+    }
+
+    .term-card h3 {
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .term-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .pricing-final-cta {
+      padding: 100px 5vw;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(201,31,47,.34), transparent 30%), #020817;
+    }
+
+    .pricing-final-cta h2 {
+      font-size: clamp(2.6rem, 5vw, 5.4rem);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+
+    .pricing-final-cta p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    @media(max-width: 1100px) {
+      .pricing-grid,
+      .terms-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width: 650px) {
+      .pricing-hero {
+        padding: 130px 5vw 80px;
+      }
+
+      .pricing-grid,
+      .terms-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .now {
+        font-size: 2.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo">
+  </div>
+
+  <header class="site-header">
+    <a href="../" class="brand">
+      <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Boat and RV Storage Complex">
+    </a>
+
+    <nav class="nav-links">
+      <a href="../#overview">Overview</a>
+      <a href="../storage-units/">Storage Options</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../location/">Location</a>
+      <a href="../contact/">Contact</a>
+    </nav>
+
+    <a href="../contact/" class="header-cta">Check Availability</a>
+  </header>
+
+  <main>
+    <section class="pricing-hero">
+      <div class="pricing-hero-content reveal">
+        <p class="eyebrow">Pricing & Move-In Specials</p>
+        <h1>Clear pricing. Premium storage. No confusion.</h1>
+        <p>
+          Choose the right storage option for your boat, RV, trailer, camper, or extra vehicle.
+          Monthly rates are simple, and annual cash payments receive a 10% discount.
+        </p>
+
+        <div class="hero-actions">
+          <a href="../contact/" class="btn btn-red">Check Availability</a>
+          <a href="../storage-units/" class="btn btn-glass">Compare Units</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="special-bar">
+      <div class="stars">★★★</div>
+      <h2>$30 Move-In Special</h2>
+      <p>Only for open-air parking secured with a 6-month contract.</p>
+    </section>
+
+    <section class="pricing-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Featured Pricing</p>
+        <h2>Was / Now pricing that makes choosing easy.</h2>
+      </div>
+
+      <div class="pricing-grid">
+        <article class="price-card reveal">
+          <span class="price-label">Most Protected</span>
+          <h2>Fully Enclosed</h2>
+          <div class="was-now">
+            <div class="was">$225</div>
+            <div class="now">$200<span>/month</span></div>
+          </div>
+          <p>Maximum coverage for boats, RVs, trailers, and valuable vehicles.</p>
+          <ul class="price-list">
+            <li>14' x 40' fully enclosed</li>
+            <li>14' x 30' fully enclosed</li>
+            <li>10' wide, 14' tall doorways</li>
+            <li>16 total units</li>
+          </ul>
+          <a href="../contact/" class="btn btn-red">Check Availability</a>
+        </article>
+
+        <article class="price-card reveal">
+          <span class="price-label">Protected Value</span>
+          <h2>Enclosed</h2>
+          <div class="was-now">
+            <div class="was">$180</div>
+            <div class="now">$160<span>/month</span></div>
+          </div>
+          <p>Protected enclosed storage with practical space and a lower monthly rate.</p>
+          <ul class="price-list">
+            <li>14' x 40' enclosed</li>
+            <li>14' x 30' enclosed</li>
+            <li>10' wide, 14' tall doorways</li>
+            <li>16 total units</li>
+          </ul>
+          <a href="../contact/" class="btn btn-red">Check Availability</a>
+        </article>
+
+        <article class="price-card reveal">
+          <span class="price-label">Covered Parking</span>
+          <h2>Covered</h2>
+          <div class="was-now">
+            <div class="was">$145</div>
+            <div class="now">$125<span>/month</span></div>
+          </div>
+          <p>Overhead protection for boats, trailers, campers, and RVs.</p>
+          <ul class="price-list">
+            <li>12' x 30' covered spaces</li>
+            <li>20 total spaces</li>
+            <li>Overhead protection</li>
+            <li>24/7 tenant access</li>
+          </ul>
+          <a href="../contact/" class="btn btn-red">Check Availability</a>
+        </article>
+
+        <article class="price-card featured reveal">
+          <span class="price-label">$30 Move-In Special</span>
+          <h2>Open-Air</h2>
+          <div class="was-now">
+            <div class="was">$55</div>
+            <div class="now">From $40<span>/month</span></div>
+          </div>
+          <p>Affordable outdoor parking with multiple depth options.</p>
+          <ul class="price-list">
+            <li>12' wide spaces</li>
+            <li>20', 30', 40', and 60' depths</li>
+            <li>150 total open-air spaces</li>
+            <li>Special available with qualifying 6-month contract</li>
+          </ul>
+          <a href="../contact/" class="btn btn-red">Claim Special</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="pricing-table-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Full Rate Sheet</p>
+        <h2>All unit sizes and monthly rates.</h2>
+      </div>
+
+      <div class="pricing-table-wrap reveal">
+        <table>
+          <thead>
+            <tr>
+              <th>Storage Type</th>
+              <th>Size</th>
+              <th>Count</th>
+              <th>Door / Access Details</th>
+              <th>Monthly Rate</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><strong>Fully Enclosed</strong></td>
+              <td>14' wide x 40' deep</td>
+              <td>8 units</td>
+              <td>10' wide x 14' tall doorway</td>
+              <td><strong>$200/month</strong></td>
+            </tr>
+
+            <tr>
+              <td><strong>Fully Enclosed</strong></td>
+              <td>14' wide x 30' deep</td>
+              <td>8 units</td>
+              <td>10' wide x 14' tall doorway</td>
+              <td><strong>$200/month</strong></td>
+            </tr>
+
+            <tr>
+              <td><strong>Enclosed</strong></td>
+              <td>14' wide x 40' deep</td>
+              <td>8 units</td>
+              <td>10' wide x 14' tall doorway</td>
+              <td><strong>$160/month</strong></td>
+            </tr>
+
+            <tr>
+              <td><strong>Enclosed</strong></td>
+              <td>14' wide x 30' deep</td>
+              <td>8 units</td>
+              <td>10' wide x 14' tall doorway</td>
+              <td><strong>$160/month</strong></td>
+            </tr>
+
+            <tr>
+              <td><strong>Covered</strong></td>
+              <td>12' wide x 30' deep</td>
+              <td>20 spaces</td>
+              <td>Covered parking</td>
+              <td><strong>$125/month</strong></td>
+            </tr>
+
+            <tr>
+              <td><strong>Open-Air</strong></td>
+              <td>12' wide x 60' deep</td>
+              <td>10 spaces</td>
+              <td>Outdoor parking</td>
+              <td><strong>$100/month</strong></td>
+            </tr>
+
+            <tr>
+              <td><strong>Open-Air</strong></td>
+              <td>12' wide x 40' deep</td>
+              <td>40 spaces</td>
+              <td>Outdoor parking</td>
+              <td><strong>$50/month</strong></td>
+            </tr>
+
+            <tr>
+              <td><strong>Open-Air</strong></td>
+              <td>12' wide x 30' deep</td>
+              <td>50 spaces</td>
+              <td>Outdoor parking</td>
+              <td><strong>$40/month</strong></td>
+            </tr>
+
+            <tr>
+              <td><strong>Open-Air</strong></td>
+              <td>12' wide x 20' deep</td>
+              <td>50 spaces</td>
+              <td>Outdoor parking</td>
+              <td><strong>$40/month</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="terms-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Rental Details</p>
+        <h2>Simple terms customers can understand.</h2>
+      </div>
+
+      <div class="terms-grid">
+        <div class="term-card reveal">
+          <strong>10%</strong>
+          <h3>Annual Cash Discount</h3>
+          <p>Customers who pay cash one year in advance receive a 10% discount.</p>
+        </div>
+
+        <div class="term-card reveal">
+          <strong>3</strong>
+          <h3>Months Due</h3>
+          <p>Move-in requires 3 months paid in advance.</p>
+        </div>
+
+        <div class="term-card reveal">
+          <strong>$5 + $2</strong>
+          <h3>Late Fee</h3>
+          <p>Late fee is $5 the first day, then $2 each following day.</p>
+        </div>
+
+        <div class="term-card reveal">
+          <strong>24/7</strong>
+          <h3>Tenant Access</h3>
+          <p>Tenants have access 24 hours a day, 7 days a week.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-final-cta">
+      <div class="reveal">
+        <p class="eyebrow">Ready To Reserve?</p>
+        <h2>Lock in the right space before the best spots are gone.</h2>
+        <p>
+          Contact Eagle Rock Boat and RV Storage Complex for current availability,
+          move-in details, and the current open-air move-in special.
+        </p>
+
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="../contact/" class="btn btn-red">Check Availability</a>
+          <a href="../storage-units/" class="btn btn-glass">Compare Storage Options</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
+    <p>Eagle Rock, Missouri</p>
+    <p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

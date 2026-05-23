@@ -145,14 +145,6 @@ width: min(650px, 80vw);
   display: none;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(90deg, rgba(2,8,23,.98), rgba(2,8,23,.72), rgba(2,8,23,.28)),
-    linear-gradient(to top, #020817 0%, transparent 32%);
-}
 
 .hero-overlay {
   position: absolute;

@@ -621,3 +621,54 @@ footer {
     flex-direction: column;
   }
 }
+/* Brighter cinematic hero images on all pages */
+.units-page-hero,
+.pricing-hero,
+.contact-hero,
+.location-hero,
+.rent-hero,
+.faq-hero {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,8,23,.92) 0%,
+      rgba(2,8,23,.70) 36%,
+      rgba(2,8,23,.28) 68%,
+      rgba(2,8,23,.08) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(2,8,23,.96) 0%,
+      rgba(2,8,23,.36) 32%,
+      rgba(2,8,23,.10) 100%
+    ),
+    url("../images/trl-hero.png") center right/cover no-repeat !important;
+}
+
+/* Let the sun and lake show through more clearly */
+.units-page-hero::after,
+.pricing-hero::after,
+.contact-hero::after,
+.location-hero::after,
+.rent-hero::after,
+.faq-hero::after {
+  opacity: .55;
+}
+
+/* Homepage hero image visibility */
+.hero-overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,8,23,.95) 0%,
+      rgba(2,8,23,.76) 34%,
+      rgba(2,8,23,.34) 64%,
+      rgba(2,8,23,.08) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(2,8,23,.96) 0%,
+      rgba(2,8,23,.44) 28%,
+      rgba(2,8,23,.12) 100%
+    ) !important;
+}

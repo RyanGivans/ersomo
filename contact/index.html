@@ -1,2 +1,354 @@
-<h1>Contact Eagle Rock Storage</h1>
-<p>Phone number, email, office hours, contact form, and emergency contact details will go here.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact | Eagle Rock Boat & RV Storage Complex</title>
+  <meta name="description" content="Contact Eagle Rock Boat and RV Storage Complex for availability, pricing, and storage move-in information." />
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    .contact-hero {
+      min-height: 72vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 150px 5vw 90px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(2,8,23,.98), rgba(2,8,23,.78), rgba(2,8,23,.34)),
+        linear-gradient(to top, rgba(2,8,23,1), rgba(2,8,23,.18)),
+        url('../assets/images/trl-hero.png') center right/cover no-repeat;
+    }
+
+    .contact-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 24%, rgba(244,199,108,.24), transparent 32%),
+        radial-gradient(circle at 18% 32%, rgba(201,31,47,.22), transparent 35%);
+      pointer-events: none;
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 930px;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(3.4rem, 7vw, 7rem);
+    }
+
+    .contact-hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.18rem;
+      line-height: 1.7;
+      margin: 24px 0 32px;
+    }
+
+    .contact-section {
+      padding: 95px 5vw;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(201,31,47,.18), transparent 30%),
+        radial-gradient(circle at 82% 24%, rgba(37,99,235,.22), transparent 34%),
+        var(--dark);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .contact-panel,
+    .form-panel {
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
+      box-shadow: 0 35px 95px rgba(0,0,0,.38);
+      padding: 34px;
+    }
+
+    .contact-panel h2,
+    .form-panel h2 {
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: .92;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .contact-panel p,
+    .form-panel p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 14px;
+      margin: 26px 0;
+    }
+
+    .big-contact-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(2,8,23,.42);
+      border: 1px solid rgba(255,255,255,.12);
+      font-weight: 950;
+    }
+
+    .big-contact-link span {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      font-size: .78rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .info-box {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(2,8,23,.42);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .info-box strong {
+      display: block;
+      color: white;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .info-box span {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .mock-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mock-field {
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(2,8,23,.48);
+      border: 1px solid rgba(255,255,255,.13);
+      color: #9fb0c8;
+    }
+
+    .mock-field.large {
+      min-height: 130px;
+    }
+
+    .form-note {
+      font-size: .9rem;
+      color: #9fb0c8 !important;
+      margin-top: 14px;
+    }
+
+    .conversion-strip {
+      padding: 90px 5vw;
+      text-align: center;
+      background:
+        linear-gradient(rgba(2,8,23,.88), rgba(2,8,23,.94)),
+        url('../assets/images/trl-hero.png') center/cover no-repeat;
+    }
+
+    .conversion-strip h2 {
+      font-size: clamp(2.6rem, 5vw, 5.4rem);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+
+    .conversion-strip p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    @media(max-width: 900px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 650px) {
+      .contact-hero {
+        padding: 130px 5vw 80px;
+      }
+
+      .big-contact-link {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo">
+  </div>
+
+  <header class="site-header">
+    <a href="../" class="brand">
+      <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Boat and RV Storage Complex">
+    </a>
+
+    <nav class="nav-links">
+      <a href="../#overview">Overview</a>
+      <a href="../storage-units/">Storage Options</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../location/">Location</a>
+      <a href="../contact/">Contact</a>
+    </nav>
+
+    <a href="mailto:EagleRockStorage.of.MO@gmail.com?subject=Storage%20Availability%20Request" class="header-cta">
+      Check Availability
+    </a>
+  </header>
+
+  <main>
+    <section class="contact-hero">
+      <div class="contact-hero-content reveal">
+        <p class="eyebrow">Contact & Availability</p>
+        <h1>Reserve your storage space.</h1>
+        <p>
+          Ask about current availability, move-in details, pricing, and the $30 open-air move-in special.
+        </p>
+
+        <div class="hero-actions">
+          <a href="mailto:EagleRockStorage.of.MO@gmail.com?subject=Storage%20Availability%20Request" class="btn btn-red">
+            Email Availability Request
+          </a>
+          <a href="../pricing/" class="btn btn-glass">View Pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-layout">
+        <div class="contact-panel reveal">
+          <p class="eyebrow">Get In Touch</p>
+          <h2>Fast answers for storage questions.</h2>
+          <p>
+            Use email for availability, move-in questions, unit options, and rental details.
+            Phone information will be added once finalized.
+          </p>
+
+          <div class="contact-actions">
+            <a class="big-contact-link" href="mailto:EagleRockStorage.of.MO@gmail.com?subject=Storage%20Availability%20Request">
+              <span>Email</span>
+              EagleRockStorage.of.MO@gmail.com
+            </a>
+
+            <div class="big-contact-link">
+              <span>Phone</span>
+              Coming Soon
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <strong>Business Support</strong>
+              <span>Monday-Friday<br>9:00 AM-5:00 PM</span>
+            </div>
+
+            <div class="info-box">
+              <strong>Tenant Access</strong>
+              <span>24 hours a day<br>7 days a week</span>
+            </div>
+
+            <div class="info-box">
+              <strong>Move-In Special</strong>
+              <span>$30 open-air special with qualifying 6-month contract.</span>
+            </div>
+
+            <div class="info-box">
+              <strong>Location</strong>
+              <span>Eagle Rock, Missouri near Table Rock Lake.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-panel reveal">
+          <p class="eyebrow">Availability Request</p>
+          <h2>Tell us what you need to store.</h2>
+          <p>
+            This quick request starts an email with the information needed to help match you to the right space.
+          </p>
+
+          <div class="mock-form">
+            <div class="mock-field">Name</div>
+            <div class="mock-field">Phone / Email</div>
+            <div class="mock-field">Boat, RV, trailer, camper, or vehicle?</div>
+            <div class="mock-field">Preferred storage type: fully enclosed, enclosed, covered, or open-air</div>
+            <div class="mock-field large">Message / size needed / move-in timeline</div>
+          </div>
+
+          <p class="form-note">
+            For now, the availability request opens an email so the storage team can respond directly.
+          </p>
+
+          <a href="mailto:EagleRockStorage.of.MO@gmail.com?subject=Storage%20Availability%20Request&body=Name:%0D%0APhone:%0D%0AWhat%20are%20you%20storing:%0D%0APreferred%20storage%20type:%0D%0AMove-in%20timeline:%0D%0AQuestions:" class="btn btn-red">
+            Start Availability Email
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="conversion-strip">
+      <div class="reveal">
+        <p class="eyebrow">Ready When You Are</p>
+        <h2>Check availability before the best spaces are gone.</h2>
+        <p>
+          Fully enclosed, enclosed, covered, and open-air spaces are available in multiple sizes
+          for boats, RVs, trailers, campers, and extra vehicles.
+        </p>
+
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="mailto:EagleRockStorage.of.MO@gmail.com?subject=Storage%20Availability%20Request" class="btn btn-red">
+            Check Availability
+          </a>
+          <a href="../storage-units/" class="btn btn-glass">Compare Storage Options</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
+    <p>Eagle Rock, Missouri</p>
+    <p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

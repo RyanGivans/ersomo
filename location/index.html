@@ -1,2 +1,415 @@
-<h1>Location</h1>
-<p>Map, directions, nearby landmarks, and property access information will go here.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Location | Eagle Rock Boat & RV Storage Complex</title>
+  <meta name="description" content="Eagle Rock Boat and RV Storage Complex is located in Eagle Rock, Missouri near Table Rock Lake, serving lake visitors, residents, boat owners, RV owners, and trailer owners." />
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    .location-hero {
+      min-height: 72vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 150px 5vw 90px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(2,8,23,.98), rgba(2,8,23,.78), rgba(2,8,23,.34)),
+        linear-gradient(to top, rgba(2,8,23,1), rgba(2,8,23,.18)),
+        url('../assets/images/trl-hero.png') center right/cover no-repeat;
+    }
+
+    .location-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 24%, rgba(244,199,108,.24), transparent 32%),
+        radial-gradient(circle at 18% 32%, rgba(201,31,47,.22), transparent 35%);
+      pointer-events: none;
+    }
+
+    .location-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 930px;
+    }
+
+    .location-hero h1 {
+      font-size: clamp(3.4rem, 7vw, 7rem);
+    }
+
+    .location-hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.18rem;
+      line-height: 1.7;
+      margin: 24px 0 32px;
+    }
+
+    .location-section {
+      padding: 95px 5vw;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(201,31,47,.18), transparent 30%),
+        radial-gradient(circle at 82% 24%, rgba(37,99,235,.22), transparent 34%),
+        var(--dark);
+    }
+
+    .location-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .location-panel,
+    .map-panel {
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
+      box-shadow: 0 35px 95px rgba(0,0,0,.38);
+      padding: 34px;
+      overflow: hidden;
+    }
+
+    .location-panel h2,
+    .directions-section h2 {
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: .92;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .location-panel p,
+    .map-panel p,
+    .direction-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .location-badges {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .location-badge {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(2,8,23,.42);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .location-badge strong {
+      display: block;
+      color: white;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .location-badge span {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .map-placeholder {
+      min-height: 390px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(2,8,23,.62), rgba(2,8,23,.82)),
+        url('../assets/images/trl-hero.png') center/cover no-repeat;
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: .7;
+    }
+
+    .map-pin {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 440px;
+      padding: 32px;
+    }
+
+    .map-pin-icon {
+      width: 74px;
+      height: 74px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 55px rgba(201,31,47,.75);
+      font-size: 2rem;
+    }
+
+    .map-pin h3 {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: -.04em;
+      margin-bottom: 10px;
+    }
+
+    .directions-section {
+      padding: 95px 5vw;
+      background:
+        linear-gradient(rgba(2,8,23,.88), rgba(2,8,23,.94)),
+        url('../assets/images/trl-hero.png') center/cover no-repeat;
+    }
+
+    .directions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .direction-card {
+      padding: 30px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.13);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 25px 70px rgba(0,0,0,.28);
+    }
+
+    .direction-card strong {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .82rem;
+      margin-bottom: 12px;
+    }
+
+    .direction-card h3 {
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-size: 1.45rem;
+    }
+
+    .location-final-cta {
+      padding: 100px 5vw;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(201,31,47,.34), transparent 30%), #020817;
+    }
+
+    .location-final-cta h2 {
+      font-size: clamp(2.6rem, 5vw, 5.4rem);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+
+    .location-final-cta p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    @media(max-width: 950px) {
+      .location-layout,
+      .directions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 650px) {
+      .location-hero {
+        padding: 130px 5vw 80px;
+      }
+
+      .location-badges {
+        grid-template-columns: 1fr;
+      }
+
+      .map-placeholder {
+        min-height: 340px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo">
+  </div>
+
+  <header class="site-header">
+    <a href="../" class="brand">
+      <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Boat and RV Storage Complex">
+    </a>
+
+    <nav class="nav-links">
+      <a href="../#overview">Overview</a>
+      <a href="../storage-units/">Storage Options</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../location/">Location</a>
+      <a href="../contact/">Contact</a>
+    </nav>
+
+    <a href="../contact/" class="header-cta">Check Availability</a>
+  </header>
+
+  <main>
+    <section class="location-hero">
+      <div class="location-hero-content reveal">
+        <p class="eyebrow">Eagle Rock, Missouri</p>
+        <h1>Storage close to Table Rock Lake.</h1>
+        <p>
+          Eagle Rock Boat and RV Storage Complex serves lake visitors, local residents,
+          boat owners, RV owners, campers, trailer owners, and anyone needing convenient
+          storage near the water.
+        </p>
+
+        <div class="hero-actions">
+          <a href="../contact/" class="btn btn-red">Check Availability</a>
+          <a href="../storage-units/" class="btn btn-glass">View Storage Options</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="location-section">
+      <div class="location-layout">
+        <div class="location-panel reveal">
+          <p class="eyebrow">Location Overview</p>
+          <h2>Built for lake access and local convenience.</h2>
+          <p>
+            Located in Eagle Rock, Missouri, the storage complex is positioned for people
+            who need quick, practical access to boats, RVs, trailers, campers, and vehicles
+            near Table Rock Lake.
+          </p>
+          <p>
+            Whether you live nearby, visit the lake seasonally, or need a long-term place
+            to store recreational equipment, Eagle Rock Boat and RV Storage Complex is
+            designed around simple access and flexible storage options.
+          </p>
+
+          <div class="location-badges">
+            <div class="location-badge">
+              <strong>Eagle Rock, MO</strong>
+              <span>Serving local residents and lake-area visitors.</span>
+            </div>
+
+            <div class="location-badge">
+              <strong>Table Rock Lake</strong>
+              <span>Convenient for boat, RV, and trailer storage near the water.</span>
+            </div>
+
+            <div class="location-badge">
+              <strong>24/7 Access</strong>
+              <span>Tenants can access stored property any time.</span>
+            </div>
+
+            <div class="location-badge">
+              <strong>Storage Options</strong>
+              <span>Fully enclosed, enclosed, covered, and open-air spaces.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-panel reveal">
+          <p class="eyebrow">Map</p>
+          <h2 style="font-size:clamp(2rem,4vw,3.7rem);line-height:.92;letter-spacing:-.055em;text-transform:uppercase;margin-bottom:18px;">
+            Property map and directions.
+          </h2>
+          <p>
+            A live map and exact property pin will be added once the final address and map embed are ready.
+          </p>
+
+          <div class="map-placeholder">
+            <div class="map-pin">
+              <div class="map-pin-icon">⌖</div>
+              <h3>Eagle Rock Storage</h3>
+              <p>Map embed coming after final address confirmation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="directions-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Directions & Access</p>
+        <h2>Made for lake traffic, weekend trips, and local storage.</h2>
+      </div>
+
+      <div class="directions-grid">
+        <div class="direction-card reveal">
+          <strong>For Boat Owners</strong>
+          <h3>Near the water</h3>
+          <p>
+            Store your boat close to the lake so it is easier to get ready for weekends,
+            seasonal use, and lake trips.
+          </p>
+        </div>
+
+        <div class="direction-card reveal">
+          <strong>For RV Owners</strong>
+          <h3>Room for larger vehicles</h3>
+          <p>
+            Large storage options make it easier to store RVs, campers, travel trailers,
+            and recreational vehicles without crowding your driveway.
+          </p>
+        </div>
+
+        <div class="direction-card reveal">
+          <strong>For Local Residents</strong>
+          <h3>Extra space close by</h3>
+          <p>
+            Open-air, covered, enclosed, and fully enclosed options give residents practical
+            storage choices close to home.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="location-final-cta">
+      <div class="reveal">
+        <p class="eyebrow">Ready To Visit?</p>
+        <h2>Find storage near Table Rock Lake before the best spaces are gone.</h2>
+        <p>
+          Contact Eagle Rock Boat and RV Storage Complex for current availability,
+          move-in details, and location information.
+        </p>
+
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="../contact/" class="btn btn-red">Check Availability</a>
+          <a href="../pricing/" class="btn btn-glass">View Pricing</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
+    <p>Eagle Rock, Missouri</p>
+    <p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

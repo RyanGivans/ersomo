@@ -4,25 +4,564 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Eagle Rock Boat & RV Storage Complex</title>
-  <meta name="description" content="Premium boat and RV storage in Eagle Rock, Missouri with fully enclosed, enclosed, covered, and open-air storage options." />
+  <title>Storage Units | Eagle Rock Boat & RV Storage Complex</title>
+  <meta
+    name="description"
+    content="Explore fully enclosed, enclosed, covered, and open-air boat and RV storage options in Eagle Rock, Missouri."
+  />
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    .units-page-hero {
+      min-height: 72vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 150px 5vw 90px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(2,8,23,.98), rgba(2,8,23,.78), rgba(2,8,23,.38)),
+        linear-gradient(to top, rgba(2,8,23,1), rgba(2,8,23,.18)),
+        url('../assets/images/trl-hero.png') center right/cover no-repeat;
+    }
+
+    .units-page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 78% 24%, rgba(244,199,108,.22), transparent 32%);
+      pointer-events: none;
+    }
+
+    .units-page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .units-page-hero h1 {
+      font-size: clamp(3.4rem, 7vw, 7rem);
+    }
+
+    .units-page-hero p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.18rem;
+      line-height: 1.7;
+      margin: 24px 0 32px;
+    }
+
+    .units-detail-section {
+      padding: 95px 5vw;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(201,31,47,.18), transparent 30%),
+        radial-gradient(circle at 82% 22%, rgba(37,99,235,.2), transparent 34%),
+        var(--dark);
+    }
+
+    .units-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .unit-detail-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
+      box-shadow: 0 35px 95px rgba(0,0,0,.38);
+      padding: 34px;
+      transition: .3s ease;
+    }
+
+    .unit-detail-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(244,199,108,.55);
+    }
+
+    .unit-detail-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(244,199,108,.2), transparent 35%);
+      opacity: .85;
+      pointer-events: none;
+    }
+
+    .unit-detail-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .unit-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .unit-label {
+      display: inline-block;
+      color: #ffd7dc;
+      background: rgba(201,31,47,.24);
+      border: 1px solid rgba(201,31,47,.35);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .unit-count {
+      text-align: right;
+      color: var(--gold);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .unit-detail-card h2 {
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: .92;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .unit-detail-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .spec {
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.11);
+      background: rgba(2,8,23,.38);
+      border-radius: 16px;
+    }
+
+    .spec strong {
+      display: block;
+      font-size: 1.25rem;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .spec span {
+      color: #9fb0c8;
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .option-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: #e8f1ff;
+      margin-bottom: 28px;
+    }
+
+    .option-list li::before {
+      content: '★';
+      color: var(--gold);
+      margin-right: 9px;
+    }
+
+    .chooser-section {
+      padding: 100px 5vw;
+      background:
+        linear-gradient(rgba(2,8,23,.88), rgba(2,8,23,.94)),
+        url('../assets/images/trl-hero.png') center/cover no-repeat;
+    }
+
+    .chooser-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .chooser-card {
+      padding: 28px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.13);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 25px 70px rgba(0,0,0,.28);
+    }
+
+    .chooser-card h3 {
+      font-size: 1.45rem;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .chooser-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .units-final-cta {
+      padding: 100px 5vw;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(201,31,47,.34), transparent 30%), #020817;
+    }
+
+    .units-final-cta h2 {
+      font-size: clamp(2.6rem, 5vw, 5.4rem);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+
+    .units-final-cta p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    @media(max-width: 1000px) {
+      .units-detail-grid,
+      .chooser-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width: 650px) {
+      .units-page-hero {
+        padding: 130px 5vw 80px;
+      }
+
+      .units-detail-grid,
+      .chooser-grid,
+      .spec-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .unit-topline {
+        flex-direction: column;
+      }
+
+      .unit-count {
+        text-align: left;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="preloader"><img src="assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo"></div>
-  <header class="site-header"><a href="#" class="brand"><img src="assets/images/ersofmo-logo.png" alt="Eagle Rock Boat and RV Storage Complex"></a><nav class="nav-links"><a href="#overview">Overview</a><a href="storage-units/">Storage Options</a><a href="pricing/">Pricing</a><a href="rent-now/">Rent Now</a><a href="faq/">FAQ</a><a href="location/">Location</a><a href="contact/">Contact</a></nav><a href="rent-now/" class="header-cta">Check Availability</a></header>
+  <div class="preloader">
+    <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo">
+  </div>
+
+  <header class="site-header">
+    <a href="../" class="brand">
+      <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Boat and RV Storage Complex">
+    </a>
+
+    <nav class="nav-links">
+      <a href="../#overview">Overview</a>
+      <a href="../storage-units/">Storage Options</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../rent-now/">Rent Now</a>
+      <a href="../faq/">FAQ</a>
+      <a href="../amenities/">Amenities</a>
+      <a href="../location/">Location</a>
+      <a href="../contact/">Contact</a>
+    </nav>
+
+    <a href="../rent-now/" class="header-cta">Check Availability</a>
+  </header>
 
   <main>
-    <section class="hero"><div class="hero-video-layer"></div><div class="hero-overlay"></div><div class="hero-logo-watermark"></div><div class="light-orb orb-red"></div><div class="light-orb orb-blue"></div><div class="hero-content reveal"><p class="eyebrow">Eagle Rock, Missouri</p><h1>Premium Boat & RV Storage Near The Water.</h1><p class="hero-copy">Secure, spacious, and built for lake life — with fully enclosed, enclosed, covered, and open-air storage options for boats, RVs, campers, trailers, and extra vehicles.</p><div class="hero-actions"><a href="storage-units/" class="btn btn-red">View Storage Options</a><a href="rent-now/" class="btn btn-glass">Check Availability</a><a href="rent-now/" class="btn btn-red">Rent Now</a></div><a href="#overview" class="video-tour"><span>▶</span> Watch Aerial Tour</a></div><div class="hero-stats reveal"><div><strong>202</strong><span>Total Spaces</span></div><div><strong>24/7</strong><span>Tenant Access</span></div><div><strong>$30</strong><span>Move-In Special</span></div></div></section>
-    <section class="promo-banner"><div class="stars">★★★</div><h2>$30 Move-In Special</h2><p>Only for open-air parking secured with a 6-month contract.</p></section>
-    <section class="feature-strip"><div class="feature reveal"><span>🛡️</span><h3>24/7 Access</h3><p>Access your property any time, day or night.</p></div><div class="feature reveal"><span>🔒</span><h3>Secure Facility</h3><p>Designed for peace of mind and easy tenant access.</p></div><div class="feature reveal"><span>📷</span><h3>Storage Focused</h3><p>Built around boats, RVs, campers, and trailers.</p></div><div class="feature reveal"><span>★</span><h3>Made For Lake Life</h3><p>Convenient storage near Eagle Rock and the water.</p></div></section>
-    <section id="overview" class="storage-section"><div class="section-heading reveal"><p class="eyebrow">Storage Options</p><h2>The right space for what you drive, tow, or store.</h2></div><div class="storage-grid"><article class="storage-card reveal"><div class="card-image image-fully"></div><div class="card-content"><h3>Fully Enclosed</h3><p>Maximum protection for boats, RVs, trailers, and valuable vehicles.</p><a href="storage-units/">Learn More →</a></div></article><article class="storage-card reveal"><div class="card-image image-enclosed"></div><div class="card-content"><h3>Enclosed</h3><p>Protected storage with large doors and practical monthly pricing.</p><a href="storage-units/">Learn More →</a></div></article><article class="storage-card reveal"><div class="card-image image-covered"></div><div class="card-content"><h3>Covered</h3><p>Overhead protection for boats, RVs, campers, and trailers.</p><a href="storage-units/">Learn More →</a></div></article><article class="storage-card reveal"><div class="card-image image-open"></div><div class="card-content"><h3>Open-Air</h3><p>Affordable outdoor parking with multiple space sizes available.</p><a href="pricing/">View Pricing →</a></div></article></div><div class="number-bar reveal"><div><strong>202</strong><span>Total Spaces</span></div><div><strong>16</strong><span>Fully Enclosed</span></div><div><strong>16</strong><span>Enclosed</span></div><div><strong>20</strong><span>Covered</span></div><div><strong>150</strong><span>Open-Air</span></div><div><strong>24/7</strong><span>Access</span></div></div></section>
-    <section class="cinematic-story"><div class="story-image reveal"></div><div class="story-copy reveal"><p class="eyebrow">Simple. Secure. Local.</p><h2>Built for people who need more than a parking spot.</h2><p>From weekend lake trips to long-term storage, Eagle Rock Boat and RV Storage Complex gives tenants flexible storage options with easy access, clear direction, and room for the vehicles that make lake life possible.</p><div class="story-actions"><a href="pricing/" class="btn btn-red">View Pricing</a><a href="location/" class="btn btn-glass">View Location</a></div></div></section>
-    <section class="final-cta"><div class="final-glow"></div><div class="reveal"><p class="eyebrow">Ready When You Are</p><h2>Reserve your space before the best spots are gone.</h2><p>Contact Eagle Rock Boat and RV Storage Complex for current availability and move-in details.</p><a href="rent-now/" class="btn btn-red">Check Availability</a></div></section>
+    <section class="units-page-hero">
+      <div class="units-page-hero-content reveal">
+        <p class="eyebrow">Storage Options</p>
+
+        <h1>Space for what you drive, tow, and protect.</h1>
+
+        <p>
+          Choose from fully enclosed, enclosed, covered, and open-air storage options
+          designed for boats, RVs, campers, trailers, and extra vehicles near Table Rock Lake.
+        </p>
+
+        <div class="hero-actions">
+          <a href="../pricing/" class="btn btn-red">View Pricing</a>
+          <a href="../rent-now/" class="btn btn-glass">Check Availability</a>
+          <a href="../amenities/" class="btn btn-glass">View Amenities</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="units-detail-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Unit Types</p>
+        <h2>Choose your level of coverage.</h2>
+      </div>
+
+      <div class="units-detail-grid">
+        <article class="unit-detail-card reveal">
+          <div class="unit-topline">
+            <span class="unit-label">Most Protected</span>
+            <span class="unit-count">16 Total Units</span>
+          </div>
+
+          <h2>Fully Enclosed</h2>
+          <p>
+            Maximum protection for boats, RVs, trailers, and vehicles that need the
+            highest level of coverage.
+          </p>
+
+          <div class="spec-grid">
+            <div class="spec">
+              <strong>14' x 40'</strong>
+              <span>8 Units</span>
+            </div>
+
+            <div class="spec">
+              <strong>14' x 30'</strong>
+              <span>8 Units</span>
+            </div>
+
+            <div class="spec">
+              <strong>10' Wide</strong>
+              <span>Door Opening</span>
+            </div>
+
+            <div class="spec">
+              <strong>14' Tall</strong>
+              <span>Door Opening</span>
+            </div>
+          </div>
+
+          <ul class="option-list">
+            <li>Best choice for maximum protection</li>
+            <li>Great for boats, RVs, trailers, and valuable vehicles</li>
+            <li>Large door clearance for easier access</li>
+          </ul>
+
+          <a href="../rent-now/" class="btn btn-red">Check Availability</a>
+        </article>
+
+        <article class="unit-detail-card reveal">
+          <div class="unit-topline">
+            <span class="unit-label">Protected Storage</span>
+            <span class="unit-count">16 Total Units</span>
+          </div>
+
+          <h2>Enclosed</h2>
+          <p>
+            Protected enclosed storage with practical space and simple monthly pricing
+            for boats, trailers, and RVs.
+          </p>
+
+          <div class="spec-grid">
+            <div class="spec">
+              <strong>14' x 40'</strong>
+              <span>8 Units</span>
+            </div>
+
+            <div class="spec">
+              <strong>14' x 30'</strong>
+              <span>8 Units</span>
+            </div>
+
+            <div class="spec">
+              <strong>10' Wide</strong>
+              <span>Door Opening</span>
+            </div>
+
+            <div class="spec">
+              <strong>14' Tall</strong>
+              <span>Door Opening</span>
+            </div>
+          </div>
+
+          <ul class="option-list">
+            <li>Strong balance of protection and value</li>
+            <li>Useful for seasonal storage and long-term parking</li>
+            <li>Large spaces for recreational vehicles and equipment</li>
+          </ul>
+
+          <a href="../rent-now/" class="btn btn-red">Check Availability</a>
+        </article>
+
+        <article class="unit-detail-card reveal">
+          <div class="unit-topline">
+            <span class="unit-label">Covered Parking</span>
+            <span class="unit-count">20 Total Units</span>
+          </div>
+
+          <h2>Covered</h2>
+          <p>
+            Covered spaces give boats, trailers, campers, and RVs overhead protection
+            while keeping access simple.
+          </p>
+
+          <div class="spec-grid">
+            <div class="spec">
+              <strong>12' x 30'</strong>
+              <span>Space Size</span>
+            </div>
+
+            <div class="spec">
+              <strong>20</strong>
+              <span>Total Spaces</span>
+            </div>
+
+            <div class="spec">
+              <strong>Covered</strong>
+              <span>Overhead Protection</span>
+            </div>
+
+            <div class="spec">
+              <strong>24/7</strong>
+              <span>Tenant Access</span>
+            </div>
+          </div>
+
+          <ul class="option-list">
+            <li>Great for boats, trailers, and campers</li>
+            <li>Overhead protection without full enclosure</li>
+            <li>Easy access for frequent use</li>
+          </ul>
+
+          <a href="../rent-now/" class="btn btn-red">Check Availability</a>
+        </article>
+
+        <article class="unit-detail-card reveal">
+          <div class="unit-topline">
+            <span class="unit-label">Most Flexible</span>
+            <span class="unit-count">150 Total Spaces</span>
+          </div>
+
+          <h2>Open-Air</h2>
+          <p>
+            Affordable outdoor parking with multiple depth options for larger vehicles,
+            trailers, boats, and RVs.
+          </p>
+
+          <div class="spec-grid">
+            <div class="spec">
+              <strong>12' x 60'</strong>
+              <span>10 Spaces</span>
+            </div>
+
+            <div class="spec">
+              <strong>12' x 40'</strong>
+              <span>40 Spaces</span>
+            </div>
+
+            <div class="spec">
+              <strong>12' x 30'</strong>
+              <span>50 Spaces</span>
+            </div>
+
+            <div class="spec">
+              <strong>12' x 20'</strong>
+              <span>50 Spaces</span>
+            </div>
+          </div>
+
+          <ul class="option-list">
+            <li>Best fit for affordable monthly parking</li>
+            <li>Multiple lengths for different vehicles and trailers</li>
+            <li>$30 move-in special available with qualifying 6-month contract</li>
+          </ul>
+
+          <a href="../rent-now/" class="btn btn-red">Claim Move-In Special</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="chooser-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Which Option Is Right For You?</p>
+        <h2>Match the space to the way you use it.</h2>
+      </div>
+
+      <div class="chooser-grid">
+        <div class="chooser-card reveal">
+          <h3>Want maximum protection?</h3>
+          <p>
+            Choose Fully Enclosed for the highest coverage level and the most protected
+            storage option.
+          </p>
+        </div>
+
+        <div class="chooser-card reveal">
+          <h3>Want enclosed value?</h3>
+          <p>
+            Choose Enclosed if you want protected storage with strong value and large
+            access openings.
+          </p>
+        </div>
+
+        <div class="chooser-card reveal">
+          <h3>Want shade and coverage?</h3>
+          <p>
+            Choose Covered for overhead protection while keeping entry and exit simple.
+          </p>
+        </div>
+
+        <div class="chooser-card reveal">
+          <h3>Want the lowest monthly rate?</h3>
+          <p>
+            Choose Open-Air for affordable parking with flexible lengths for boats,
+            RVs, and trailers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="units-final-cta">
+      <div class="reveal">
+        <p class="eyebrow">Ready To Reserve?</p>
+
+        <h2>Find the right storage space before the best spots are gone.</h2>
+
+        <p>
+          Contact Eagle Rock Boat and RV Storage Complex for current availability,
+          move-in details, and help choosing the right storage option.
+        </p>
+
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="../rent-now/" class="btn btn-red">Check Availability</a>
+          <a href="../pricing/" class="btn btn-glass">View Pricing</a>
+          <a href="../amenities/" class="btn btn-glass">View Amenities</a>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer><p>© 2025 Eagle Rock Boat and RV Storage Complex</p><p>19114 State Hwy E, Eagle Rock, MO 65641</p><p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p></footer>
-  <script src="assets/js/main.js"></script>
+
+  <footer>
+    <p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
+    <p>19114 State Hwy E, Eagle Rock, MO 65641</p>
+    <p>
+      <a href="mailto:EagleRockStorage.of.MO@gmail.com">
+        EagleRockStorage.of.MO@gmail.com
+      </a>
+    </p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>

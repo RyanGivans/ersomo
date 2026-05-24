@@ -1,1 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Amenities | Eagle Rock Boat & RV Storage Complex</title>
+  <meta name="description" content="Explore amenities at Eagle Rock Boat and RV Storage Complex including 24/7 tenant access, enclosed storage, covered storage, open-air parking, large spaces, and lake-area convenience." />
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    .amenities-hero {
+      min-height: 76vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 150px 5vw 90px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(2,8,23,.92), rgba(2,8,23,.60), rgba(2,8,23,.14)),
+        linear-gradient(to top, rgba(2,8,23,.92), rgba(2,8,23,.18)),
+        url('../assets/images/trl-hero.png') center right/cover no-repeat;
+    }
+
+    .amenities-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 22%, rgba(244,199,108,.22), transparent 32%),
+        radial-gradient(circle at 18% 34%, rgba(201,31,47,.22), transparent 35%);
+      pointer-events: none;
+    }
+
+    .amenities-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 930px;
+    }
+
+    .amenities-hero h1 {
+      font-size: clamp(3.4rem, 7vw, 7rem);
+    }
+
+    .amenities-hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.18rem;
+      line-height: 1.7;
+      margin: 24px 0 32px;
+    }
+
+    .amenity-photo-strip {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr 1fr;
+      gap: 18px;
+      padding: 28px 5vw;
+      background: #020817;
+      border-top: 1px solid rgba(255,255,255,.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .strip-photo {
+      min-height: 260px;
+      border-radius: 26px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 30px 90px rgba(0,0,0,.42);
+    }
+
+    .strip-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(2,8,23,.74), rgba(2,8,23,.08));
+    }
+
+    .strip-photo span {
+      position: absolute;
+      z-index: 2;
+      left: 22px;
+      bottom: 20px;
+      color: white;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .9rem;
+    }
+
+    .strip-boat {
+      background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80');
+    }
+
+    .strip-rv {
+      background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80');
+    }
+
+    .strip-storage {
+      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80');
+    }
+
+    .amenities-section {
+      padding: 95px 5vw;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(201,31,47,.18), transparent 30%),
+        radial-gradient(circle at 82% 24%, rgba(37,99,235,.22), transparent 34%),
+        var(--dark);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .amenity-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 310px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 35px 95px rgba(0,0,0,.38);
+      display: flex;
+      align-items: flex-end;
+      transition: .3s ease;
+    }
+
+    .amenity-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(244,199,108,.55);
+    }
+
+    .amenity-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: .45s ease;
+      filter: saturate(1.08) contrast(1.08);
+    }
+
+    .amenity-card:hover::before {
+      transform: scale(1.08);
+    }
+
+    .amenity-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(2,8,23,.96), rgba(2,8,23,.36), rgba(2,8,23,.05)),
+        radial-gradient(circle at top right, rgba(244,199,108,.18), transparent 36%);
+    }
+
+    .amenity-content {
+      position: relative;
+      z-index: 2;
+      padding: 26px;
+    }
+
+    .amenity-content span {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .amenity-content h3 {
+      text-transform: uppercase;
+      font-size: 1.45rem;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .amenity-content p {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .amenity-access::before {
+      background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1100&q=80');
+    }
+
+    .amenity-enclosed::before {
+      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=80');
+    }
+
+    .amenity-covered::before {
+      background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1100&q=80');
+    }
+
+    .amenity-open::before {
+      background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=80');
+    }
+
+    .amenity-clearance::before {
+      background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1100&q=80');
+    }
+
+    .amenity-lake::before {
+      background-image: url('../assets/images/trl-hero.png');
+    }
+
+    .amenity-support::before {
+      background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1100&q=80');
+    }
+
+    .amenity-insurance::before {
+      background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1100&q=80');
+    }
+
+    .facility-section {
+      padding: 100px 5vw;
+      background:
+        linear-gradient(rgba(2,8,23,.88), rgba(2,8,23,.94)),
+        url('../assets/images/trl-hero.png') center/cover no-repeat;
+    }
+
+    .facility-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .facility-copy h2 {
+      font-size: clamp(2.6rem, 5vw, 5.4rem);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+      margin-bottom: 22px;
+    }
+
+    .facility-copy p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.08rem;
+      margin-bottom: 24px;
+    }
+
+    .facility-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin: 26px 0;
+    }
+
+    .facility-list li {
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      font-weight: 900;
+    }
+
+    .facility-list li::before {
+      content: '★';
+      color: var(--gold);
+      margin-right: 10px;
+    }
+
+    .facility-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .facility-photo {
+      min-height: 230px;
+      border-radius: 24px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
+    }
+
+    .facility-photo.large {
+      grid-column: span 2;
+      min-height: 320px;
+      background-image: url('../assets/images/trl-hero.png');
+    }
+
+    .facility-photo.one {
+      background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80');
+    }
+
+    .facility-photo.two {
+      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80');
+    }
+
+    .numbers-section {
+      padding: 90px 5vw;
+      background: #031125;
+    }
+
+    .amenity-number-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 30px 90px rgba(0,0,0,.36);
+    }
+
+    .amenity-number-bar div {
+      text-align: center;
+      padding: 30px 16px;
+      border-right: 1px solid rgba(255,255,255,.12);
+    }
+
+    .amenity-number-bar div:last-child {
+      border-right: 0;
+    }
+
+    .amenity-number-bar strong {
+      display: block;
+      color: var(--gold);
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .amenity-number-bar span {
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .06em;
+    }
+
+    .amenities-final-cta {
+      padding: 100px 5vw;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(201,31,47,.34), transparent 30%), #020817;
+    }
+
+    .amenities-final-cta h2 {
+      font-size: clamp(2.6rem, 5vw, 5.4rem);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+
+    .amenities-final-cta p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    @media(max-width: 1100px) {
+      .amenities-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .facility-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .amenity-number-bar {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media(max-width: 760px) {
+      .amenity-photo-strip,
+      .amenities-grid,
+      .facility-photo-grid,
+      .amenity-number-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .facility-photo.large {
+        grid-column: span 1;
+      }
+
+      .amenities-hero {
+        padding: 130px 5vw 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Storage Logo">
+  </div>
+
+  <header class="site-header">
+    <a href="../" class="brand">
+      <img src="../assets/images/ersofmo-logo.png" alt="Eagle Rock Boat and RV Storage Complex">
+    </a>
+
+    <nav class="nav-links">
+      <a href="../#overview">Overview</a>
+      <a href="../storage-units/">Storage Options</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../rent-now/">Rent Now</a>
+      <a href="../faq/">FAQ</a>
+      <a href="../amenities/">Amenities</a>
+      <a href="../location/">Location</a>
+      <a href="../contact/">Contact</a>
+    </nav>
+
+    <a href="../rent-now/" class="header-cta">Check Availability</a>
+  </header>
+
+  <main>
+    <section class="amenities-hero">
+      <div class="amenities-hero-content reveal">
+        <p class="eyebrow">Facility Amenities</p>
+        <h1>Storage built around lake life.</h1>
+        <p>
+          Eagle Rock Boat and RV Storage Complex is designed for boats, RVs, campers,
+          trailers, and extra vehicles — with storage options that balance access,
+          protection, convenience, and value near Table Rock Lake.
+        </p>
+
+        <div class="hero-actions">
+          <a href="../rent-now/" class="btn btn-red">Check Availability</a>
+          <a href="../storage-units/" class="btn btn-glass">View Storage Options</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenity-photo-strip">
+      <div class="strip-photo strip-boat reveal">
+        <span>Lake-area convenience</span>
+      </div>
+
+      <div class="strip-photo strip-rv reveal">
+        <span>Built for RVs & trailers</span>
+      </div>
+
+      <div class="strip-photo strip-storage reveal">
+        <span>Protected storage options</span>
+      </div>
+    </section>
+
+    <section class="amenities-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">What You Get</p>
+        <h2>Practical amenities with a premium feel.</h2>
+      </div>
+
+      <div class="amenities-grid">
+        <article class="amenity-card amenity-access reveal">
+          <div class="amenity-content">
+            <span>24/7</span>
+            <h3>Tenant Access</h3>
+            <p>Access your stored property any time, day or night.</p>
+          </div>
+        </article>
+
+        <article class="amenity-card amenity-enclosed reveal">
+          <div class="amenity-content">
+            <span>▣</span>
+            <h3>Fully Enclosed</h3>
+            <p>Maximum protection for boats, RVs, trailers, and valuable vehicles.</p>
+          </div>
+        </article>
+
+        <article class="amenity-card amenity-covered reveal">
+          <div class="amenity-content">
+            <span>⌂</span>
+            <h3>Covered Storage</h3>
+            <p>Overhead protection for boats, trailers, campers, and RVs.</p>
+          </div>
+        </article>
+
+        <article class="amenity-card amenity-open reveal">
+          <div class="amenity-content">
+            <span>$30</span>
+            <h3>Move-In Special</h3>
+            <p>Open-air parking special available with a qualifying 6-month contract.</p>
+          </div>
+        </article>
+
+        <article class="amenity-card amenity-clearance reveal">
+          <div class="amenity-content">
+            <span>14'</span>
+            <h3>Tall Doorways</h3>
+            <p>Enclosed units include 10' wide and 14' tall door openings.</p>
+          </div>
+        </article>
+
+        <article class="amenity-card amenity-lake reveal">
+          <div class="amenity-content">
+            <span>⌖</span>
+            <h3>Near Table Rock</h3>
+            <p>Convenient storage in Eagle Rock, Missouri near Table Rock Lake.</p>
+          </div>
+        </article>
+
+        <article class="amenity-card amenity-support reveal">
+          <div class="amenity-content">
+            <span>9-5</span>
+            <h3>Business Support</h3>
+            <p>Support hours are Monday through Friday from 9:00 AM to 5:00 PM.</p>
+          </div>
+        </article>
+
+        <article class="amenity-card amenity-insurance reveal">
+          <div class="amenity-content">
+            <span>✓</span>
+            <h3>Insurance Required</h3>
+            <p>Tenants must carry insurance on stored vehicles and property.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="facility-section">
+      <div class="facility-layout">
+        <div class="facility-copy reveal">
+          <p class="eyebrow">Facility Confidence</p>
+          <h2>Designed for the way people actually use storage.</h2>
+          <p>
+            This is storage for lake weekends, seasonal vehicles, long-term parking,
+            recreational equipment, and everyday extra space. Customers can choose the
+            level of coverage they need without overcomplicating the process.
+          </p>
+
+          <ul class="facility-list">
+            <li>Fully enclosed, enclosed, covered, and open-air spaces</li>
+            <li>Large options for boats, RVs, campers, and trailers</li>
+            <li>Multiple open-air lengths for flexible parking</li>
+            <li>Simple monthly pricing and annual cash discount options</li>
+            <li>Facility access details are provided during move-in</li>
+          </ul>
+
+          <div class="hero-actions">
+            <a href="../pricing/" class="btn btn-red">View Pricing</a>
+            <a href="../rent-now/" class="btn btn-glass">Check Availability</a>
+          </div>
+        </div>
+
+        <div class="facility-photo-grid reveal">
+          <div class="facility-photo large"></div>
+          <div class="facility-photo one"></div>
+          <div class="facility-photo two"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="numbers-section">
+      <div class="amenity-number-bar reveal">
+        <div>
+          <strong>202</strong>
+          <span>Total Spaces</span>
+        </div>
+
+        <div>
+          <strong>24/7</strong>
+          <span>Tenant Access</span>
+        </div>
+
+        <div>
+          <strong>14'</strong>
+          <span>Tall Doors</span>
+        </div>
+
+        <div>
+          <strong>$30</strong>
+          <span>Move-In Special</span>
+        </div>
+
+        <div>
+          <strong>9-5</strong>
+          <span>Business Support</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenities-final-cta">
+      <div class="reveal">
+        <p class="eyebrow">Ready To Choose A Space?</p>
+        <h2>Find storage that fits your boat, RV, trailer, or vehicle.</h2>
+        <p>
+          Compare storage options, review pricing, and check availability for current
+          spaces at Eagle Rock Boat and RV Storage Complex.
+        </p>
+
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="../rent-now/" class="btn btn-red">Check Availability</a>
+          <a href="../storage-units/" class="btn btn-glass">Compare Storage Options</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Eagle Rock Boat and RV Storage Complex</p>
+    <p>19114 State Hwy E, Eagle Rock, MO 65641</p>
+    <p><a href="mailto:EagleRockStorage.of.MO@gmail.com">EagleRockStorage.of.MO@gmail.com</a></p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

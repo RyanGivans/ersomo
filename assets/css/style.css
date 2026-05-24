@@ -1,3 +1,5 @@
+/* ===== PART 1 START: RESET + HEADER + HERO BASE ===== */
+
 * {
   margin: 0;
   padding: 0;
@@ -31,6 +33,7 @@ a {
   text-decoration: none;
 }
 
+/* Preloader */
 .preloader {
   position: fixed;
   inset: 0;
@@ -42,11 +45,12 @@ a {
 }
 
 .preloader img {
-width: min(650px, 80vw);
+  width: min(650px, 80vw);
   filter:
-  drop-shadow(0 0 25px rgba(255,255,255,.35))
-  drop-shadow(0 0 60px rgba(37,99,235,.45))
-  drop-shadow(0 0 100px rgba(201,31,47,.35));  animation: pulseLogo 1.6s ease-in-out infinite;
+    drop-shadow(0 0 25px rgba(255,255,255,.35))
+    drop-shadow(0 0 60px rgba(37,99,235,.45))
+    drop-shadow(0 0 100px rgba(201,31,47,.35));
+  animation: pulseLogo 1.6s ease-in-out infinite;
 }
 
 .preloader.hide {
@@ -55,10 +59,18 @@ width: min(650px, 80vw);
 }
 
 @keyframes pulseLogo {
-  0%, 100% { transform: scale(1); opacity: .75; }
-  50% { transform: scale(1.06); opacity: 1; }
+  0%, 100% {
+    transform: scale(1);
+    opacity: .75;
+  }
+
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
 }
 
+/* Header */
 .site-header {
   position: fixed;
   top: 0;
@@ -69,6 +81,7 @@ width: min(650px, 80vw);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 22px;
   background: rgba(2, 8, 23, .72);
   border-bottom: 1px solid rgba(255,255,255,.12);
   backdrop-filter: blur(18px);
@@ -82,8 +95,8 @@ width: min(650px, 80vw);
 
 .nav-links {
   display: flex;
-  gap: 32px;
-  font-size: .78rem;
+  gap: 22px;
+  font-size: .72rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .08em;
@@ -109,6 +122,7 @@ width: min(650px, 80vw);
   box-shadow: 0 0 35px rgba(201,31,47,.55);
 }
 
+/* Hero */
 .hero {
   min-height: 100vh;
   position: relative;
@@ -126,7 +140,7 @@ width: min(650px, 80vw);
   background-size: cover;
   background-position: center right;
   background-repeat: no-repeat;
-  filter: saturate(1.12) contrast(1.08) brightness(.86);
+  filter: saturate(1.2) contrast(1.08) brightness(1.08);
   transform: scale(1.04);
   animation: heroSlowZoom 18s ease-in-out infinite alternate;
 }
@@ -145,7 +159,6 @@ width: min(650px, 80vw);
   display: none;
 }
 
-
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -153,22 +166,17 @@ width: min(650px, 80vw);
   background:
     linear-gradient(
       90deg,
-      rgba(2,8,23,.98) 0%,
-      rgba(2,8,23,.86) 34%,
-      rgba(2,8,23,.48) 64%,
-      rgba(2,8,23,.12) 100%
+      rgba(2,8,23,.88) 0%,
+      rgba(2,8,23,.60) 34%,
+      rgba(2,8,23,.18) 66%,
+      rgba(2,8,23,0) 100%
     ),
     linear-gradient(
       to top,
-      rgba(2,8,23,1) 0%,
-      rgba(2,8,23,.55) 28%,
-      rgba(2,8,23,.28) 100%
+      rgba(2,8,23,.9) 0%,
+      rgba(2,8,23,.26) 30%,
+      rgba(2,8,23,0) 100%
     );
-}
-
-@keyframes slowFloat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-24px) scale(1.04); }
 }
 
 .light-orb {
@@ -196,8 +204,13 @@ width: min(650px, 80vw);
 }
 
 @keyframes drift {
-  from { transform: translate(0,0) scale(1); }
-  to { transform: translate(35px,-30px) scale(1.15); }
+  from {
+    transform: translate(0,0) scale(1);
+  }
+
+  to {
+    transform: translate(35px,-30px) scale(1.15);
+  }
 }
 
 .hero-content {
@@ -229,6 +242,10 @@ h1 {
   margin: 28px 0 32px;
   max-width: 650px;
 }
+
+/* ===== PART 1 END: RESET + HEADER + HERO BASE ===== */
+
+/* ===== PART 2 START: BUTTONS + HOMEPAGE SECTIONS ===== */
 
 .hero-actions,
 .story-actions {
@@ -436,6 +453,10 @@ h1 {
   background-image: url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80");
 }
 
+/* ===== PART 2 END: BUTTONS + HOMEPAGE SECTIONS ===== */
+
+/* ===== PART 3 START: CARDS + STORY + FOOTER + REVEAL ===== */
+
 .card-content {
   padding: 24px;
   text-align: center;
@@ -563,6 +584,43 @@ footer {
   border-top: 1px solid rgba(255,255,255,.08);
 }
 
+/* Vista Venture footer credit */
+.site-credit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.site-credit a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #6f8098;
+  font-size: .76rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .72;
+  transition: .25s ease;
+}
+
+.site-credit img {
+  width: 118px;
+  max-height: 34px;
+  object-fit: contain;
+  opacity: .78;
+  filter: grayscale(1) brightness(1.3);
+}
+
+.site-credit a:hover {
+  opacity: 1;
+  color: var(--gold);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(38px);
@@ -574,18 +632,89 @@ footer {
   transform: translateY(0);
 }
 
+/* ===== PART 3 END: CARDS + STORY + FOOTER + REVEAL ===== */
+
+/* ===== PART 4 START: INNER HERO OVERRIDES + RESPONSIVE ===== */
+
+/* Clearer cinematic hero images across inner pages */
+.units-page-hero,
+.pricing-hero,
+.contact-hero,
+.location-hero,
+.rent-hero,
+.faq-hero,
+.amenities-hero {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,8,23,.88) 0%,
+      rgba(2,8,23,.58) 34%,
+      rgba(2,8,23,.16) 68%,
+      rgba(2,8,23,0) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(2,8,23,.88) 0%,
+      rgba(2,8,23,.22) 34%,
+      rgba(2,8,23,0) 100%
+    ),
+    url("../images/trl-hero.png") center right/cover no-repeat !important;
+}
+
+.units-page-hero::after,
+.pricing-hero::after,
+.contact-hero::after,
+.location-hero::after,
+.rent-hero::after,
+.faq-hero::after,
+.amenities-hero::after {
+  opacity: .25 !important;
+}
+
+@media(max-width: 1180px) {
+  .nav-links {
+    gap: 16px;
+    font-size: .68rem;
+  }
+
+  .header-cta {
+    padding: 12px 18px;
+    font-size: .78rem;
+  }
+}
+
 @media(max-width: 1000px) {
-  .nav-links { display: none; }
+  .nav-links {
+    display: none;
+  }
+
   .feature-strip,
-  .storage-grid { grid-template-columns: 1fr 1fr; }
-  .number-bar { grid-template-columns: repeat(3, 1fr); }
-  .cinematic-story { grid-template-columns: 1fr; }
+  .storage-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .number-bar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cinematic-story {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media(max-width: 650px) {
-  .site-header { padding: 14px 5vw; }
-  .brand img { width: 72px; }
-  .header-cta { font-size: .72rem; padding: 11px 14px; }
+  .site-header {
+    padding: 14px 5vw;
+  }
+
+  .brand img {
+    width: 72px;
+  }
+
+  .header-cta {
+    font-size: .72rem;
+    padding: 11px 14px;
+  }
 
   .hero {
     padding: 130px 5vw 220px;
@@ -620,58 +749,16 @@ footer {
   footer {
     flex-direction: column;
   }
-}
-/* Clearer cinematic hero images across the site */
-.hero-image-layer,
-.hero-video-layer {
-  filter: saturate(1.2) contrast(1.08) brightness(1.08) !important;
+
+  .site-credit a {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .site-credit img {
+    width: 140px;
+  }
 }
 
-.units-page-hero,
-.pricing-hero,
-.contact-hero,
-.location-hero,
-.rent-hero,
-.faq-hero {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(2,8,23,.88) 0%,
-      rgba(2,8,23,.58) 34%,
-      rgba(2,8,23,.16) 68%,
-      rgba(2,8,23,0) 100%
-    ),
-    linear-gradient(
-      to top,
-      rgba(2,8,23,.88) 0%,
-      rgba(2,8,23,.22) 34%,
-      rgba(2,8,23,0) 100%
-    ),
-    url("../images/trl-hero.png") center right/cover no-repeat !important;
-}
-
-.units-page-hero::after,
-.pricing-hero::after,
-.contact-hero::after,
-.location-hero::after,
-.rent-hero::after,
-.faq-hero::after {
-  opacity: .25 !important;
-}
-
-.hero-overlay {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(2,8,23,.88) 0%,
-      rgba(2,8,23,.60) 34%,
-      rgba(2,8,23,.18) 66%,
-      rgba(2,8,23,0) 100%
-    ),
-    linear-gradient(
-      to top,
-      rgba(2,8,23,.9) 0%,
-      rgba(2,8,23,.26) 30%,
-      rgba(2,8,23,0) 100%
-    ) !important;
-}
+/* ===== PART 4 END: INNER HERO OVERRIDES + RESPONSIVE ===== */

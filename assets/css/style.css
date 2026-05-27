@@ -113,6 +113,42 @@ a {
   opacity: 1;
 }
 
+.mobile-menu-btn {
+  display: none;
+  width: 46px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 8px;
+  background: rgba(255,255,255,.06);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 102;
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 999px;
+  transition: .25s ease;
+}
+
+body.nav-open .mobile-menu-btn span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+body.nav-open .mobile-menu-btn span:nth-child(2) {
+  opacity: 0;
+}
+
+body.nav-open .mobile-menu-btn span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
 .header-cta {
   background: var(--red);
   padding: 14px 22px;
@@ -684,8 +720,48 @@ footer {
 }
 
 @media(max-width: 1000px) {
+  .mobile-menu-btn {
+    display: inline-flex;
+    order: 3;
+  }
+
   .nav-links {
-    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 5vw;
+    right: 5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 16px;
+    background: rgba(2, 8, 23, .98);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.55);
+    backdrop-filter: blur(18px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    pointer-events: none;
+    transition: .25s ease;
+  }
+
+  body.nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 16px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    font-size: .82rem;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: 0;
   }
 
   .feature-strip,
@@ -705,6 +781,7 @@ footer {
 @media(max-width: 650px) {
   .site-header {
     padding: 14px 5vw;
+    gap: 10px;
   }
 
   .brand img {
@@ -712,8 +789,14 @@ footer {
   }
 
   .header-cta {
-    font-size: .72rem;
-    padding: 11px 14px;
+    font-size: .68rem;
+    padding: 11px 12px;
+    order: 2;
+  }
+
+  .mobile-menu-btn {
+    width: 42px;
+    height: 38px;
   }
 
   .hero {

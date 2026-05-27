@@ -20,6 +20,24 @@ const revealObserver = new IntersectionObserver(
 
 reveals.forEach(el => revealObserver.observe(el));
 
+const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+const navLinks = document.querySelector(".nav-links");
+
+if (mobileMenuBtn && navLinks) {
+  mobileMenuBtn.addEventListener("click", () => {
+    document.body.classList.toggle("nav-open");
+    const isOpen = document.body.classList.contains("nav-open");
+    mobileMenuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.body.classList.remove("nav-open");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
 window.addEventListener("scroll", () => {
   const header = document.querySelector(".site-header");
   if (window.scrollY > 80) {
